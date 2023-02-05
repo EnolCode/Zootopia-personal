@@ -9,7 +9,6 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "pinia": "^2.0.11",
     "@quasar/extras": "^1.0.0",
     "quasar": "^2.6.0",
