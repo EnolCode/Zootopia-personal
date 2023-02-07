@@ -57,8 +57,8 @@ public class AnimalController {
 
         // BeanUtils.copyProperties(userDetails, user.get()) Con esta linea podemos modificar todo el objeto, pero en este caso no queremos modificar el id
         animal.get().setName(animalDetails.getName()); // Coge el nombre que le pasamos y lo inyecta en el usuario que queremos modificar
-        animal.get().setFamilyAnimal(animalDetails.getFamilyAnimal());
-        animal.get().setTypeAnimal(animalDetails.getTypeAnimal());
+        animal.get().setFamily(animalDetails.getFamily());
+        animal.get().setType(animalDetails.getType());
         // animal.get().setEnabled(animalDetails.getEnabled());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal.get())); 

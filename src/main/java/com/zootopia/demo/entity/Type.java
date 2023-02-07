@@ -2,11 +2,14 @@ package com.zootopia.demo.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+// import javax.persistence.JoinColumn;
+// import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import java.util.List;
+
 
 @Entity 
 @Table(name = "types")
@@ -20,9 +23,8 @@ public class Type {
     @Column(name = "type")
     String type;
 
-    @ManyToOne
-    @JoinColumn(name="id_animal")
-    Animal animal;
+    @OneToMany(mappedBy="family")
+    List<Animal> Animal;
 
     public Long getIdType() {
         return idType;
@@ -40,13 +42,13 @@ public class Type {
         this.type = type;
     }
 
-    public Animal getAnimal() {
-        return animal;
-    }
+    // public Animal getAnimal() {
+    //     return animal;
+    // }
 
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
-    }
+    // public void setAnimal(Animal animal) {
+    //     this.animal = animal;
+    // }
 
    
 
