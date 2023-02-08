@@ -80,7 +80,7 @@ const deleteAnimal =  async() => {
 </script>
 
 <template>
-<div class="q-pa-md q-gutter-sm bg-grey-3 col-12">
+<div class="q-pa-md q-gutter-sm bg-grey-3">
     <q-breadcrumbs>
       <q-breadcrumbs-el icon="fa-solid fa-house-circle-xmark" to="/" style="font-size:16px;" />
       <q-breadcrumbs-el label="Add Animal" icon="fa-solid fa-user-plus" to="/formAdd" />
@@ -88,7 +88,7 @@ const deleteAnimal =  async() => {
   </div>
 
 
-  <div class="q-pa-md">
+  <div class="column q-pa-md ">
     <q-table
       title="Animales"
       :rows="rows"
@@ -98,11 +98,11 @@ const deleteAnimal =  async() => {
       color="amber"
       selection="single"
       v-model:selected="selected"
+      class="col-8"
     />
-    <q-btn-group rounded>
-      <q-btn color="amber" rounded glossy icon="timeline" @click="deleteAnimal" />
-      <q-btn color="amber" rounded glossy icon="visibility" />
-      <q-btn color="amber" rounded glossy icon-right="update" label="Update" />
+    <q-btn-group class="self-end q-my-lg">
+      <q-btn color="amber" rounded glossy icon="fa-solid fa-trash-can" @click="deleteAnimal" />
+      <q-btn color="amber" rounded glossy icon-right="fa-solid fa-pencil"  />
     </q-btn-group>
 
   </div>
