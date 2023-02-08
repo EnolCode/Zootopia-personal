@@ -1,36 +1,65 @@
 <script setup>
-import { onMounted, ref, reactive } from "vue"
-import axios from "axios"
-let datos = reactive("")
-const rows = ref([])
-onMounted(()=>{
-   axios.get("https://jsonplaceholder.typicode.com/posts/")
-    .then(response => rows.value = response.data )
-    rows.value.forEach((row, index) => {
-      row.index = index
-    })
-  })
-  console.log(rows)
+import { onMounted, ref, reactive } from "vue";
+import axios from "axios";
+let datos = reactive("");
+const rows = ref([]);
+onMounted(() => {
+  axios
+    .get("http://localhost:8080/api/animals")
+    .then((response) => (rows.value = response.data));
+  rows.value.forEach((row, index) => {
+    row.index = index;
+  });
+});
 
-  const columns = [
+const columns = [
   {
-    name: 'id',
-    label: '#',
-    field: 'id',
-    align: 'left',
+    name: "id",
+    label: "#",
+    field: "id",
+    align: "left",
   },
   {
-    name: 'userId',
-    label: 'userId',
-    field: 'userId',
-    sortable: true
+    name: "name",
+    label: "name",
+    align: "center",
+    field: "name",
+    sortable: true,
   },
 
-  { name: 'title',  label: 'title', field: 'title', sortable: true, align: 'center', },
-  { name: 'body', label: 'body', field: 'body', sortable: true, align: 'center',}
-]
+  {
+    name: "country",
+    label: "country",
+    field: "country",
+    align: "center",
+    sortable: true,
+  },
 
+  {
+    name: "type",
+    label: "type",
+    field: "type",
+    align: "center",
+    sortable: true,
+  },
 
+  {
+    name: "family",
+    label: "family",
+    field: "family",
+    align: "center",
+    sortable: true,
+  },
+
+  {
+    name: "gender",
+    label: "gender",
+    field: "gender",
+    align: "center",
+    sortable: true,
+  },
+  // { name: 'type', label: 'type', field: 'animals.gender', sortable: true, align: 'center',}
+];
 
 // export default {
 //   setup () {
@@ -38,19 +67,19 @@ onMounted(()=>{
 //       columns,
 //       rows,
 
-      pagination: ref({
-        rowsPerPage: 10
-      })
+pagination: ref({
+  rowsPerPage: 10,
+});
 //     }
-  // }
-  // }
+// }
+// }
 </script>
 <template>
   <!-- <div v-for="post in datos" :key="post.id">
     <h2>{{ post.body }}</h2>
   </div> -->
 
-   <div class="q-pa-md">
+  <div class="q-pa-md">
     <q-table
       title="Animales"
       :rows="rows"
@@ -62,7 +91,4 @@ onMounted(()=>{
   </div>
 </template>
 
-<style lang="scss" scoped>
-
-
-</style>
+<style lang="scss" scoped></style>

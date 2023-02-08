@@ -20,8 +20,14 @@ public class Family {
     @Column(name = "family")
     String family;
     
+    public List<Animal> getAnimal() {
+        return animal;
+    }
+    public void setAnimal(List<Animal> animal) {
+        this.animal = animal;
+    }
     @OneToMany(mappedBy = "family")
-    private List<Animal> animals;
+    private List<Animal> animal;
 
     public Long getIdFamily() {
         return idFamily;

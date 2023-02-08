@@ -15,7 +15,7 @@ public interface AnimalService {
 
     public Optional<Animal> findById(Long id);
 
-    public Animal save(Animal user);
+    public Animal save(Animal animal);
 
     public void deleteById(Long id);
 

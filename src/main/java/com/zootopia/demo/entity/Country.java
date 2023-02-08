@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 @Entity 
-@Table(name = "familys")
+@Table(name = "contries")
 public class Country {
 
     @Id
@@ -21,7 +21,7 @@ public class Country {
     String country;
     
     @OneToMany(mappedBy = "country")
-    private List<Animal> animals;
+    private List<Animal> animal;
 
     public Long getIdCountry() {
         return idCountry;
@@ -39,12 +39,12 @@ public class Country {
         this.country = country;
     }
 
-    public List<Animal> getAnimals() {
-        return animals;
+    public List<Animal> getAnimal() {
+        return animal;
     }
 
-    public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
+    public void setAnimal(List<Animal> animal) {
+        this.animal = animal;
     }
 
 }

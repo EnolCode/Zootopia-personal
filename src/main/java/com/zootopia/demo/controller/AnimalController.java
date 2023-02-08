@@ -5,9 +5,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+// import org.apache.tomcat.util.http.parser.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zootopia.demo.entity.Animal;
 import com.zootopia.demo.service.AnimalService;
 
+@CrossOrigin(origins = "http://localhost:9000")
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
@@ -28,7 +31,7 @@ public class AnimalController {
     private AnimalService animalService;
 
     //Creamos nuevo usuario
-    @PostMapping // Abreviatura  de RqquestMapping para decir que es un metodo post
+    @PostMapping(value = "", consumes="application/*" ) // Abreviatura  de RqquestMapping para decir que es un metodo post
     public ResponseEntity<?> create (@RequestBody Animal animal) {
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal));
     }
@@ -42,7 +45,7 @@ public class AnimalController {
             return ResponseEntity.notFound().build(); // Si el usuario no es encontrado por el id deveulve un not found
         }
 
-        return ResponseEntity.ok(oAnimal);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
+        return ResponseEntity.ok(oAnimal.get());  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
     }
 
     // Actualizar usuario
@@ -86,6 +89,6 @@ public class AnimalController {
                     .collect(Collectors.toList());  // Para pasarlo a una lista
 
     return animals;
-
     }
+    
 }

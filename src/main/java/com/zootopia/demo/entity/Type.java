@@ -20,7 +20,7 @@ public class Type {
     @Column(name = "id_type")
     Long idType;
 
-    @Column(name = "type")
+    @Column(name="type")
     String type;
 
     @OneToMany(mappedBy="family")
@@ -42,14 +42,11 @@ public class Type {
         this.type = type;
     }
 
-    // public Animal getAnimal() {
-    //     return animal;
-    // }
+    public List<Animal> getAnimal() {
+        return Animal;
+    }
 
-    // public void setAnimal(Animal animal) {
-    //     this.animal = animal;
-    // }
-
-   
-
+    public void setAnimal(List<Animal> animal) {
+        Animal = animal;
+    }
 }
