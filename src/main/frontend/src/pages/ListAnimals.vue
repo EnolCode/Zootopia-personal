@@ -1,16 +1,19 @@
 <script setup>
-import { onMounted, ref, reactive } from "vue";
+import { onMounted, ref, reactive, onUpdated } from "vue";
 import axios from "axios";
-let datos = reactive("");
+
 const rows = ref([]);
+let selected = ref([]);
 onMounted(() => {
   axios
     .get("http://localhost:8080/api/animals")
     .then((response) => (rows.value = response.data));
-  rows.value.forEach((row, index) => {
-    row.index = index;
-  });
 });
+
+onUpdated(()=>{
+
+})
+
 
 const columns = [
   {
@@ -58,25 +61,20 @@ const columns = [
     align: "center",
     sortable: true,
   },
-  // { name: 'type', label: 'type', field: 'animals.gender', sortable: true, align: 'center',}
 ];
-
-// export default {
-//   setup () {
-//     return {
-//       columns,
-//       rows,
 
 pagination: ref({
   rowsPerPage: 10,
 });
-//     }
-// }
-// }
+
+const deleteAnimal =  async() => {
+
+  axios.delete("http://localhost:8080/api/animals/"+selected.value[0].id)
+    .then(res=>console.log(res))
+    .catch(err=>console.log(err))
+};
 </script>
 <template>
-
-
 <div class="q-pa-md q-gutter-sm bg-grey-3 col-12">
     <q-breadcrumbs>
       <q-breadcrumbs-el icon="fa-solid fa-house-circle-xmark" to="/" style="font-size:16px;" />
@@ -93,7 +91,15 @@ pagination: ref({
       row-key="name"
       dark
       color="amber"
+      selection="single"
+      v-model:selected="selected"
     />
+    <q-btn-group rounded>
+      <q-btn color="amber" rounded glossy icon="timeline" @click="deleteAnimal" />
+      <q-btn color="amber" rounded glossy icon="visibility" />
+      <q-btn color="amber" rounded glossy icon-right="update" label="Update" />
+    </q-btn-group>
+
   </div>
 </template>
 

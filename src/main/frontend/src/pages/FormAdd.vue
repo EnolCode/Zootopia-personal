@@ -7,18 +7,7 @@ import axios from "axios";
 const router = useRouter();
 
 const $q = useQuasar();
-const redirectToLogin = () => {
-  router.push({ path: "/list" });
-};
 
-const userForm = ref({
-  name: "",
-  // date: "",
-  // type: "",
-  // family: "",
-  // country: "",
-  // gender: "",
-});
 let nameModel = ref("");
 let typeModel = ref("");
 let genderModel = ref("");
@@ -37,21 +26,11 @@ const onSubmit =  async() => {
         gender: genderModel.value,
         country: countryModel.value,
         family: familyModel.value
-        // type:{
-        //   "type": typeModel.value
-        // },
-        // gender:{
-        //   "gender": genderModel.value
-        // },
-        // type:{
-        //   "type": typeModel.value
-        // },
       }
     })
       .then(res=>console.log(res))
       .catch(err=>console.log(err))
     };
-
 
 const onReset = () => {
   userForm.value = {
