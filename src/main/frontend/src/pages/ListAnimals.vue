@@ -69,11 +69,16 @@ pagination: ref({
 
 const deleteAnimal =  async() => {
 
-  axios.delete("http://localhost:8080/api/animals/"+selected.value[0].id)
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err))
+  axios.delete("http://localhost:8080/api/animals/" + selected.value[0].id)
+  .then((res) => {
+      const index = rows.value.findIndex( row => row.id === selected.value[0].id);
+      rows.value.splice(index, 1);
+    })
+    .catch((err) => console.log(err));
+
 };
 </script>
+
 <template>
 <div class="q-pa-md q-gutter-sm bg-grey-3 col-12">
     <q-breadcrumbs>
