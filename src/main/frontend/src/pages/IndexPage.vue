@@ -14,8 +14,6 @@ const userForm = ref({
   email: "",
   password1: "",
   password2: "",
-  conditions: false,
-  errorConditions: false,
 });
 
 const onSubmit = () => {

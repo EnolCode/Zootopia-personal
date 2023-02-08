@@ -65,6 +65,12 @@ const onReset = () => {
 </script>
 <template>
   <q-page class="row">
+    <div class="q-pa-md q-gutter-sm bg-grey-3 col-12">
+    <q-breadcrumbs>
+      <q-breadcrumbs-el icon="fa-solid fa-house-circle-xmark" to="/" style="font-size:16px;" />
+      <q-breadcrumbs-el label="List" icon="fa-solid fa-list" to="/list" />
+    </q-breadcrumbs>
+  </div>
     <div class="row col-12 items-center">
       <q-img
         src="https://images.moviesanywhere.com/cac313fcf9373e9446b6bb8ff171b8d1/8b8d6a81-b8e6-49ad-b835-32c2f01a03c5.jpg"

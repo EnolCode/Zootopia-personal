@@ -75,9 +75,15 @@ pagination: ref({
 // }
 </script>
 <template>
-  <!-- <div v-for="post in datos" :key="post.id">
-    <h2>{{ post.body }}</h2>
-  </div> -->
+
+
+<div class="q-pa-md q-gutter-sm bg-grey-3 col-12">
+    <q-breadcrumbs>
+      <q-breadcrumbs-el icon="fa-solid fa-house-circle-xmark" to="/" style="font-size:16px;" />
+      <q-breadcrumbs-el label="Add Animal" icon="fa-solid fa-user-plus" to="/formAdd" />
+    </q-breadcrumbs>
+  </div>
+
 
   <div class="q-pa-md">
     <q-table
