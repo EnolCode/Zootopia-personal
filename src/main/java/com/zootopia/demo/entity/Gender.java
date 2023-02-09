@@ -1,37 +1,40 @@
 package com.zootopia.demo.entity;
+
+// import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-// import javax.persistence.JoinColumn;
-// import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+// import javax.persistence.JoinColumn;
 import javax.persistence.Table;
-import javax.persistence.OneToMany;
-import java.util.List;
+// import com.zootopia.demo.entity.Animal;
 
-
-@Entity 
-@Table(name = "genders")
+@Entity
+@Table (name="genders")
 public class Gender {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_gender")
-    Long idGender;
+    @Column (name ="id_gender")
+    Long idgenero;
 
-    @Column(name = "gender")
+    @Column(name="gender")
     String gender;
 
-    @OneToMany(mappedBy="gender")
-    List<Animal> Animal;
+    
 
-    public Long getIdGender() {
-        return idGender;
+    // @OneToMany(mappedBy ="genero")
+    // private List<Animal> animals;
+
+
+    public Long getIdgenero() {
+        return idgenero;
     }
 
-    public void setIdGender(Long idGender) {
-        this.idGender = idGender;
+    public void setIdgenero(Long idgenero) {
+        this.idgenero = idgenero;
     }
 
     public String getGender() {
@@ -42,11 +45,8 @@ public class Gender {
         this.gender = gender;
     }
 
-    public List<Animal> getAnimal() {
-        return Animal;
-    }
+    
+   
 
-    public void setAnimal(List<Animal> animal) {
-        Animal = animal;
-    }
+    
 }

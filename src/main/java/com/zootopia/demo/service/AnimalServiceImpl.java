@@ -1,5 +1,6 @@
 package com.zootopia.demo.service;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,7 +19,7 @@ public class AnimalServiceImpl implements AnimalService {
 
     @Override
     @Transactional(readOnly = true)
-    public Iterable<Animal> findAll() {
+    public List<Animal> findAll() {
 
         return userRepository.findAll();
     }
