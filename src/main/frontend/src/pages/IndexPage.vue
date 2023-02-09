@@ -6,6 +6,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const $q = useQuasar();
+
 const redirectToLogin = () => {
   router.push({ path: "/list" });
 };

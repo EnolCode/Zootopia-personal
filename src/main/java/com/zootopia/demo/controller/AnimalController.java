@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zootopia.demo.entity.Animal;
 import com.zootopia.demo.service.AnimalService;
 
-@CrossOrigin(origins = "http://localhost:9000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
