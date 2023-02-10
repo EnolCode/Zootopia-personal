@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.zootopia.demo.entity.Animal;
 
 import com.zootopia.demo.service.AnimalService;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
     @Autowired
     private AnimalService animalService;
     //Creamos nuevo usuario
-    @PostMapping // Abreviatura  de RqquestMapping para decir que es un metodo post
+    @PostMapping(value = "", consumes="application/*" )// Abreviatura  de RqquestMapping para decir que es un metodo post
     public ResponseEntity<?> create (@RequestBody Animal animal) {
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal));
     }
