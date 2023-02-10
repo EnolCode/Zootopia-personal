@@ -67,9 +67,22 @@ public class Animal {
         this.date = date;
     }
 
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
     @ManyToOne
     @JoinColumn(name = "family_id", nullable = true)
     Family family;
+
+    @ManyToOne
+    @JoinColumn(name= "country_id" ,nullable = true)
+    Country country;
+
 
     // @ManyToOne
     // @JoinColumn(name= "id_type",nullable = true)
@@ -79,9 +92,6 @@ public class Animal {
     // @JoinColumn(name= "id_genero",nullable = true)
     // GeneroEntity genero;
 
-    // @ManyToOne
-    // @JoinColumn(name= "id_pais",nullable = true)
-    // PaisEntity pais;
 
     // @OneToMany(mappedBy ="type")
     // private List<TipoEntity> typeAnimal;

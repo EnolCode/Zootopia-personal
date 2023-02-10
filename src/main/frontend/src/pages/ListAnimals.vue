@@ -18,21 +18,28 @@ onUpdated(()=>{
 const columns = [
   {
     name: "id",
-    label: "#",
+    label: "ID",
     field: "id",
     align: "left",
   },
   {
     name: "name",
-    label: "name",
+    label: "Name",
     align: "center",
     field: "name",
+    sortable: true,
+  },
+  {
+    name: "date",
+    label: "Date of admission",
+    field: "date",
+    align: "center",
     sortable: true,
   },
 
   {
     name: "country",
-    label: "country",
+    label: "Country",
     field: "country",
     align: "center",
     sortable: true,
@@ -40,7 +47,7 @@ const columns = [
 
   {
     name: "type",
-    label: "type",
+    label: "Type",
     field: "type",
     align: "center",
     sortable: true,
@@ -48,7 +55,7 @@ const columns = [
 
   {
     name: "family",
-    label: "family",
+    label: "Family",
     field: "family",
     align: "center",
     sortable: true,
@@ -56,7 +63,7 @@ const columns = [
 
   {
     name: "gender",
-    label: "gender",
+    label: "Gender",
     field: "gender",
     align: "center",
     sortable: true,
