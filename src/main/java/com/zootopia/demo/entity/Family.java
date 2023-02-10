@@ -38,6 +38,15 @@ public class Family {
         this.id = id;
     }
 
+    public Family(Long id, String name, List<Animal> animals) {
+        this.id = id;
+        this.name = name;
+        this.animals = animals;
+    }
+    public Family() {
+       
+    }
+
     public String getName() {
         return name;
     }
@@ -48,5 +57,4 @@ public class Family {
 
     @OneToMany(mappedBy = "family")
     private List<Animal> animals;
-
 }
