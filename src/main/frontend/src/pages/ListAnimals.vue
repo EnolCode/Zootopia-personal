@@ -1,16 +1,19 @@
 <script setup>
-import { onMounted, ref, reactive } from "vue";
+import { onMounted, ref, reactive, onUpdated } from "vue";
 import axios from "axios";
-let datos = reactive("");
+
 const rows = ref([]);
+let selected = ref([]);
 onMounted(() => {
   axios
     .get("http://localhost:8080/api/animals")
     .then((response) => (rows.value = response.data));
-  rows.value.forEach((row, index) => {
-    row.index = index;
-  });
 });
+
+onUpdated(()=>{
+
+})
+
 
 const columns = [
   {
@@ -58,28 +61,34 @@ const columns = [
     align: "center",
     sortable: true,
   },
-  // { name: 'type', label: 'type', field: 'animals.gender', sortable: true, align: 'center',}
 ];
-
-// export default {
-//   setup () {
-//     return {
-//       columns,
-//       rows,
 
 pagination: ref({
   rowsPerPage: 10,
 });
-//     }
-// }
-// }
-</script>
-<template>
-  <!-- <div v-for="post in datos" :key="post.id">
-    <h2>{{ post.body }}</h2>
-  </div> -->
 
-  <div class="q-pa-md">
+const deleteAnimal =  async() => {
+
+  axios.delete("http://localhost:8080/api/animals/" + selected.value[0].id)
+  .then((res) => {
+      const index = rows.value.findIndex( row => row.id === selected.value[0].id);
+      rows.value.splice(index, 1);
+    })
+    .catch((err) => console.log(err));
+
+};
+</script>
+
+<template>
+<div class="q-pa-md q-gutter-sm bg-grey-3">
+    <q-breadcrumbs>
+      <q-breadcrumbs-el icon="fa-solid fa-house-circle-xmark" to="/" style="font-size:16px;" />
+      <q-breadcrumbs-el label="Add Animal" icon="fa-solid fa-user-plus" to="/formAdd" />
+    </q-breadcrumbs>
+  </div>
+
+
+  <div class="column q-pa-md ">
     <q-table
       title="Animales"
       :rows="rows"
@@ -87,7 +96,15 @@ pagination: ref({
       row-key="name"
       dark
       color="amber"
+      selection="single"
+      v-model:selected="selected"
+      class="col-8"
     />
+    <q-btn-group class="self-end q-my-lg">
+      <q-btn color="amber" rounded glossy icon="fa-solid fa-trash-can" @click="deleteAnimal" />
+      <q-btn color="amber" rounded glossy icon-right="fa-solid fa-pencil"  />
+    </q-btn-group>
+
   </div>
 </template>
 
