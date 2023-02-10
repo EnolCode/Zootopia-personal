@@ -83,26 +83,12 @@ public class Animal {
     @JoinColumn(name= "country_id" ,nullable = true)
     Country country;
 
+    @ManyToOne
+    @JoinColumn(name= "gender_id" ,nullable = true)
+    Gender gender;
 
-    // @ManyToOne
-    // @JoinColumn(name= "id_type",nullable = true)
-    // TipoEntity type;
-
-    // @ManyToOne
-    // @JoinColumn(name= "id_genero",nullable = true)
-    // GeneroEntity genero;
-
-
-    // @OneToMany(mappedBy ="type")
-    // private List<TipoEntity> typeAnimal;
-
-    // @OneToMany(mappedBy ="GeneroEntity")
-    // private List<GeneroEntity> gEntity;
-
-    // @OneToMany(mappedBy ="FamilyEntity")
-    // private List<FamilyEntity> fEntity;
-
-    // @OneToMany(mappedBy ="PaisEntity")
-    // private List<PaisEntity> pEntity;
+    @ManyToOne
+    @JoinColumn(name= "type_id",nullable = true)
+    Type type;
 
 }
