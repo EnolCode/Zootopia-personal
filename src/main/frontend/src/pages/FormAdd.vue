@@ -67,7 +67,7 @@ const onReset = () => {
         @reset="onReset"
         class="q-gutter-lg col-8 "
       >
-        <span class="text-h3 text-weight-bold">Add Animal</span>
+        <span class="title text-h3 text-weight-bold">Add Animal</span>
         <q-input
           filled
           v-model="nameModel"
@@ -114,11 +114,11 @@ const onReset = () => {
           <q-btn
             label="Reset"
             type="reset"
-            color="black"
+            color="brown-8"
             flat
             class="q-mb-md btn-reset"
           />
-          <q-btn unelevated label="Submit" type="submit" color="black" />
+          <q-btn unelevated label="Submit" type="submit" color="brown-8" />
         </div>
       </q-form>
     </div>
@@ -134,10 +134,14 @@ const onReset = () => {
 
 <style lang="scss" scoped>
 .btn-reset {
-  border: 1px solid black;
+  border: 1px solid $brown;
 }
 
 .nav{
   width: 100vw;
+}
+
+.title{
+  color: $brown;
 }
 </style>

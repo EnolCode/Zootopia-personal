@@ -97,7 +97,7 @@ const isSendPassword = (val) => {
             flat
             class="q-mb-md btn-reset"
           />
-          <q-btn unelevated label="Submit" type="submit" color="black" />
+          <q-btn unelevated label="Submit" type="submit" class="btn-submit" />
         </div>
       </q-form>
     </div>
@@ -113,8 +113,15 @@ const isSendPassword = (val) => {
 </template>
 
 <style lang="scss" scoped>
-
+.text-h3{
+  color: $orange;
+}
 .btn-reset{
-  border: 1px solid black
+  border: 1px solid black;
+}
+
+.btn-submit{
+  color: white;
+  background-color: $orange;
 }
 </style>
