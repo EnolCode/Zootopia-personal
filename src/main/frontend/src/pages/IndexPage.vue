@@ -35,16 +35,16 @@ const onReset = () => {
 const isValidEmail = (val) => {
   const emailPattern =
     /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
-  return emailPattern.test(val) || "El correo no parece ser válido";
+  return emailPattern.test(val) || "Email invalid";
 };
 
 const isSendPassword = (val) => {
-  return val === userForm.value.password1 || "Las contraseñas no son iguales";
+  return val === userForm.value.password1 || "The passwords are not the same";
 };
 </script>
 
 <template>
-  <q-page class="row justify-between ">
+  <q-page class="row justify-between">
     <div class="row col-5 justify-center items-center">
 
       <q-form
@@ -56,11 +56,11 @@ const isSendPassword = (val) => {
         <q-input
           filled
           v-model="userForm.email"
-          label="Correo electrónico"
+          label="Email"
           type="email"
           lazy-rules
           :rules="[
-            (val) => (val && val.length > 0) || 'Este campo es obligatorio',
+            (val) => (val && val.length > 0) || 'Field required',
             isValidEmail,
           ]"
         />

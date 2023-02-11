@@ -1,18 +1,25 @@
 <script setup>
 import { onMounted, ref, reactive, onUpdated } from "vue";
 import axios from "axios";
+import AnimalTemplate from "src/payload/AnimalTemplate";
 
 const rows = ref([]);
+const animal = ref([]);
 let selected = ref([]);
+
+// const animalTemplate = new AnimalTemplate(
+//   animal.name,
+//   animal.date,
+//   animal.country.name,
+//   animal.family.family
+// )
+
 onMounted(() => {
   axios
     .get("http://localhost:8080/api/animals")
-    .then((response) => (rows.value = response.data));
-});
-
-onUpdated(()=>{
-
-})
+    .then((response) => (animal.value = response.data));
+    console.log(animal.value)
+  });
 
 
 const columns = [

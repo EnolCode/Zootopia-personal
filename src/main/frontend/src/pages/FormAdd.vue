@@ -48,7 +48,7 @@ const onReset = () => {
 </script>
 <template>
 
-<q-page class="row justify-between ">
+<q-page class="row justify-between bg-brown-1">
 
     <div class="nav q-pa-md q-gutter-sm bg-grey-3">
       <q-breadcrumbs>
