@@ -63,7 +63,7 @@ const columns = [
 
   {
     name: "gender",
-    label: "Gender",
+    label: "Gender ",
     field: "gender",
     align: "center",
     sortable: true,

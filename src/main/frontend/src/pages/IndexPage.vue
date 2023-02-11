@@ -42,22 +42,17 @@ const isSendPassword = (val) => {
   return val === userForm.value.password1 || "Las contraseñas no son iguales";
 };
 </script>
-<template>
-  <q-page class="row ">
-    <div class="row col-12 items-center " >
 
-      <q-img
-        src="https://images.moviesanywhere.com/cac313fcf9373e9446b6bb8ff171b8d1/8b8d6a81-b8e6-49ad-b835-32c2f01a03c5.jpg"
-        spinner-color="white"
-        class=" col-0 col-xl-7 col-lg-7 col-md-7"
-        style="height: 100vh;"
-      />
+<template>
+  <q-page class="row justify-between ">
+    <div class="row col-5 justify-center items-center">
+
       <q-form
         @submit="onSubmit"
         @reset="onReset"
-        class=" column q-gutter-xl col-10 col-md-4 col-lg-4 col-xl-4 q-pl-xl "
+        class="q-gutter-lg col-10 col-md-4 col-lg-4 col-xl-8"
       >
-      <span class="text-h1 text-weight-bold">LOG IN</span>
+      <span class="text-h3 text-weight-bold">Welcome Again <q-icon name="fa-solid fa-paw" /> </span>
         <q-input
           filled
           v-model="userForm.email"
@@ -106,6 +101,14 @@ const isSendPassword = (val) => {
         </div>
       </q-form>
     </div>
+
+    <q-img
+        src="https://images.moviesanywhere.com/cac313fcf9373e9446b6bb8ff171b8d1/8b8d6a81-b8e6-49ad-b835-32c2f01a03c5.jpg"
+        spinner-color="white"
+        class="col-0 col-xl-7 col-lg-7 col-md-7 self-end"
+        style="height: 100vh;"
+      />
+
   </q-page>
 </template>
 
