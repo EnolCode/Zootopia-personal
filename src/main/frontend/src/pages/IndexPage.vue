@@ -10,6 +10,8 @@ const redirectToLogin = () => {
    router.push({ path: '/list'})
   }
 
+let isPwd = ref(true);
+
 const userForm = ref({
   email: "",
   password1: "",
@@ -45,6 +47,12 @@ const isSendPassword = (val) => {
 
 <template>
   <q-page class="row justify-between">
+    <q-img
+        src="https://images.moviesanywhere.com/cac313fcf9373e9446b6bb8ff171b8d1/8b8d6a81-b8e6-49ad-b835-32c2f01a03c5.jpg"
+        spinner-color="white"
+        class="col-0 col-xl-7 col-lg-7 col-md-7 self-end"
+        style="height: 100vh;"
+      />
     <div class="row col-5 justify-center items-center">
 
       <q-form
@@ -52,7 +60,7 @@ const isSendPassword = (val) => {
         @reset="onReset"
         class="q-gutter-lg col-10 col-md-4 col-lg-4 col-xl-8"
       >
-      <span class="text-h3 text-weight-bold">Welcome Again <q-icon name="fa-solid fa-paw" /> </span>
+      <span class="text-h2 text-weight-bold">Welcome <q-icon name="fa-solid fa-paw" /> </span>
         <q-input
           filled
           v-model="userForm.email"
@@ -65,28 +73,47 @@ const isSendPassword = (val) => {
           ]"
         />
 
-        <q-input
-          filled
-          type="password"
-          v-model="userForm.password1"
-          label="Contraseña"
-          lazy-rules
-          :rules="[
-            (val) => (val && val.length > 0) || 'Este campo es obligatorio',
-          ]"
-        />
 
         <q-input
+          v-model="userForm.password1"
           filled
-          type="password"
-          v-model="userForm.password2"
-          label="Repetir contraseña"
+          :type="isPwd ? 'password' : 'text'"
           lazy-rules
           :rules="[
-            (val) => (val && val.length > 0) || 'Este campo es obligatorio',
-            isSendPassword,
+            (val) => (val && val.length > 0) || 'This field is required',
+            isSendPassword
           ]"
-        />
+          label="Password"
+        >
+          <template v-slot:append>
+            <q-icon
+              :name="isPwd ? 'visibility_off' : 'visibility'"
+              class="cursor-pointer"
+              @click="isPwd = !isPwd"
+            />
+          </template>
+        </q-input>
+
+        <q-input
+        v-model="userForm.password2"
+          filled
+          :type="isPwd ? 'password' : 'text'"
+          lazy-rules
+          :rules="[
+            (val) => (val && val.length > 0) || 'This field is required',
+             isSendPassword
+          ]"
+          label="Repeat password"
+        >
+          <template v-slot:append>
+            <q-icon
+              label="repeat password"
+              :name="isPwd ? 'visibility_off' : 'visibility'"
+              class="cursor-pointer"
+              @click="isPwd = !isPwd"
+            />
+          </template>
+        </q-input>
 
 
         <div class="column justify-end">
@@ -102,18 +129,11 @@ const isSendPassword = (val) => {
       </q-form>
     </div>
 
-    <q-img
-        src="https://images.moviesanywhere.com/cac313fcf9373e9446b6bb8ff171b8d1/8b8d6a81-b8e6-49ad-b835-32c2f01a03c5.jpg"
-        spinner-color="white"
-        class="col-0 col-xl-7 col-lg-7 col-md-7 self-end"
-        style="height: 100vh;"
-      />
-
   </q-page>
 </template>
 
 <style lang="scss" scoped>
-.text-h3{
+.text-h2{
   color: $orange;
 }
 .btn-reset{

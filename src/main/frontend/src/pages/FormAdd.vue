@@ -60,6 +60,12 @@ const onReset = () => {
         <q-breadcrumbs-el label="List" icon="fa-solid fa-list" to="/list" />
       </q-breadcrumbs>
     </div>
+    <q-img
+      src="https://3.bp.blogspot.com/-2F5CBcSeVbs/VtVvzRarBYI/AAAAAAAAMHA/1F30Ax_zWks/s1600/zootopia-zootropolis-poster.jpg"
+      spinner-color="white"
+      class="col-0 col-xl-7 col-lg-7 col-md-7"
+      style="height: 95vh"
+    />
 
     <div class="row col-12 col-md-5 col-lg-5 col-xl-5 justify-center items-center">
       <q-form
@@ -122,12 +128,7 @@ const onReset = () => {
         </div>
       </q-form>
     </div>
-    <q-img
-      src="https://3.bp.blogspot.com/-2F5CBcSeVbs/VtVvzRarBYI/AAAAAAAAMHA/1F30Ax_zWks/s1600/zootopia-zootropolis-poster.jpg"
-      spinner-color="white"
-      class="col-0 col-xl-7 col-lg-7 col-md-7"
-      style="height: 95vh"
-    />
+
 
   </q-page>
 </template>
