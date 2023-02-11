@@ -90,5 +90,4 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name= "type_id",nullable = true)
     Type type;
-
 }

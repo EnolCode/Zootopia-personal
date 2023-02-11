@@ -26,12 +26,13 @@ public class AnimalController {
     @Autowired
     private AnimalService animalService;
     //Creamos nuevo usuario
-    @PostMapping(value = "", consumes="application/*" )// Abreviatura  de RqquestMapping para decir que es un metodo post
+
+    @PostMapping(value = "", consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Animal animal) {
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal));
     }
-    // Leer un usuario
-    @GetMapping("/{id}") // Abreviatura  de RqquestMapping para decir que es un metodo get
+
+    @GetMapping("/{id}") 
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Animal> oAnimal = animalService.findById(id);
         if(!oAnimal.isPresent()){
