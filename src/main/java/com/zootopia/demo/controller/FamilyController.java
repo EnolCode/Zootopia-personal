@@ -35,9 +35,9 @@ public class FamilyController {
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Family> oFamily = familyService.findById(id);
         if(!oFamily.isPresent()){
-            return ResponseEntity.notFound().build(); // Si el usuario no es encontrado por el id deveulve un not found
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(oFamily);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
+        return ResponseEntity.ok(oFamily);  
     }
 
     @PutMapping("/family/{id}")

@@ -34,11 +34,11 @@ public class CountryController {
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Country> oCountry = countryService.findById(id);
         if(!oCountry.isPresent()){
-            return ResponseEntity.notFound().build(); // Si el usuario no es encontrado por el id deveulve un not found
+            return ResponseEntity.notFound().build(); 
         }
-        return ResponseEntity.ok(oCountry);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
+        return ResponseEntity.ok(oCountry);  
     }
-    // Actualizar usuario
+    
     @PutMapping("/country/{id}")
     public ResponseEntity<?> update(@RequestBody Country countryDetails, @PathVariable Long id){
         Optional<Country> country = countryService.findById(id);
@@ -50,7 +50,6 @@ public class CountryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country.get()));
     }
     
-
     @DeleteMapping("/country/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!countryService.findById(id).isPresent()) {
