@@ -1,5 +1,9 @@
 package com.zootopia.demo.repository;
 
-public interface FamilyRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.zootopia.demo.entity.Family;
+
+public interface FamilyRepository extends JpaRepository<Family, Long> {
     
 }

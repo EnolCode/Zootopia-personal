@@ -19,8 +19,8 @@ public class Family {
     @Column(name = "id_family")
     Long idFamily;
 
-    @Column(name = "name")
-    String name;
+    @Column(name = "family")
+    String family;
 
 
     public Long getIdFamily() {
@@ -31,21 +31,22 @@ public class Family {
         this.idFamily = id;
     }
 
-    public Family(Long id, String name, List<Animal> animals) {
+
+    public Family(Long id, String family, List<Animal> animals) {
         this.idFamily = id;
-        this.name = name;
+        this.family = family;
         this.animals = animals;
     }
     public Family() {
        
     }
 
-    public String getName() {
-        return name;
+    public String getFamily() {
+        return family;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFamily(String name) {
+        this.family = name;
     }
 
     @OneToMany(mappedBy = "family")

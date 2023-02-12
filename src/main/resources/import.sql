@@ -1,6 +1,6 @@
 INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
 
-INSERT INTO families (id_family,name) VALUES (default,'Reptiles')
+INSERT INTO families (id_family,family) VALUES (default,'Reptiles')
 
 INSERT INTO countries (id_country,country) VALUES (default,'Burkina Faso')
 
