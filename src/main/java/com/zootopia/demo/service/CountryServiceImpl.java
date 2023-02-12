@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zootopia.demo.entity.Animal;
 import com.zootopia.demo.entity.Country;
 import com.zootopia.demo.repository.CountryRepository;
 

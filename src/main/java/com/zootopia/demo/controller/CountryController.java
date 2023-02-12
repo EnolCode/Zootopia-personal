@@ -15,24 +15,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zootopia.demo.entity.Animal;
 import com.zootopia.demo.entity.Country;
 import com.zootopia.demo.service.CountryService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/api/animals")
+@RequestMapping("/api/")
 public class CountryController {
     @Autowired
     private CountryService countryService;
-    //Creamos nuevo usuario
 
-    @PostMapping(value = "", consumes="application/*" )
+    @PostMapping(value= "/{animalId}/country" , consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Country country) {
         return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country));
     }
 
-    @GetMapping("/types") 
+    @GetMapping("/countries/{id}") 
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Country> oCountry = countryService.findById(id);
         if(!oCountry.isPresent()){
@@ -41,19 +39,19 @@ public class CountryController {
         return ResponseEntity.ok(oCountry);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
     }
     // Actualizar usuario
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Animal animalDetails, @PathVariable Long id){
+    @PutMapping("/countries/{id}")
+    public ResponseEntity<?> update(@RequestBody Country countryDetails, @PathVariable Long id){
         Optional<Country> country = countryService.findById(id);
         if(!country.isPresent()){
             return ResponseEntity.notFound().build();
         }
-        country.get().setCountry(animalDetails.getName()); 
+        country.get().setCountry(countryDetails.getCountry()); 
         
         return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country.get()));
     }
     
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/countries/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!countryService.findById(id).isPresent()) {
             return ResponseEntity.notFound().build();
@@ -63,7 +61,7 @@ public class CountryController {
     }
     
     
-    @GetMapping
+    @GetMapping("/countries") 
     public List<Country> readAll() {
         return countryService.findAll();
 
