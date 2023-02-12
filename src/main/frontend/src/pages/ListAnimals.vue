@@ -1,26 +1,21 @@
 <script setup>
 import { onMounted, ref, reactive, onUpdated } from "vue";
 import axios from "axios";
-import AnimalTemplate from "src/payload/AnimalTemplate";
+import  { transformData }  from "../functions/functions.js"
 
 const rows = ref([]);
-const animal = ref([]);
+const urlAnimal = "http://localhost:8080/api/animals";
 let selected = ref([]);
 
 
-// const animalTemplate = new AnimalTemplate(
-//   animal.name,
-//   animal.date,
-//   // animal.country.name,
-//   // animal.family.family
-// )
 onMounted(() => {
   axios
-    .get("http://localhost:8080/api/animals")
-    .then((response) => (animal.value.push(response.data)));
+  .get(urlAnimal)
+  .then((response) => {
+    const transformedData = transformData(response.data);
+    rows.value = transformedData;
   });
-  console.log(animal.value)
-
+})
 
 const columns = [
   {
@@ -114,6 +109,7 @@ const deleteAnimal =  async() => {
       v-model:selected="selected"
       class="col-8"
     />
+
     <q-btn-group class="self-end q-my-lg">
       <q-btn color="amber" rounded glossy icon="fa-solid fa-trash-can" @click="deleteAnimal" />
       <q-btn color="amber" rounded glossy icon-right="fa-solid fa-pencil"  />
