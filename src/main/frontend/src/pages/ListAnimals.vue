@@ -7,19 +7,19 @@ const rows = ref([]);
 const animal = ref([]);
 let selected = ref([]);
 
+
 // const animalTemplate = new AnimalTemplate(
 //   animal.name,
 //   animal.date,
-//   animal.country.name,
-//   animal.family.family
+//   // animal.country.name,
+//   // animal.family.family
 // )
-
 onMounted(() => {
   axios
     .get("http://localhost:8080/api/animals")
-    .then((response) => (animal.value = response.data));
-    console.log(animal.value)
+    .then((response) => (animal.value.push(response.data)));
   });
+  console.log(animal.value)
 
 
 const columns = [

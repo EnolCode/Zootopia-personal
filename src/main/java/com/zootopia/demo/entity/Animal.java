@@ -75,19 +75,37 @@ public class Animal {
         this.country = country;
     }
 
+    
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+    
+    public Type getType() {
+        return type;
+    }
+    
+    public void setType(Type type) {
+        this.type = type;
+    }
+    
     @ManyToOne
     @JoinColumn(name = "family_id", nullable = true)
     Family family;
 
     @ManyToOne
-    @JoinColumn(name= "country_id" ,nullable = true)
-    Country country;
-
-    @ManyToOne
-    @JoinColumn(name= "gender_id" ,nullable = true)
+    @JoinColumn(name= "gender_id" , nullable = true)
     Gender gender;
 
     @ManyToOne
-    @JoinColumn(name= "type_id",nullable = true)
+    @JoinColumn(name= "country_id" , nullable = true)
+    Country country;
+
+
+    @ManyToOne
+    @JoinColumn(name= "type_id", nullable = true)
     Type type;
 }

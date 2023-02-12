@@ -54,11 +54,8 @@ public class AnimalController {
         // animal.get().setEnabled(animalDetails.getEnabled());
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal.get()));
     }
-    // Eliminar usuario
-    /**
-     * @param id
-     * @return
-     */
+    
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!animalService.findById(id).isPresent()) {
@@ -67,6 +64,7 @@ public class AnimalController {
         animalService.deleteById(id);
         return ResponseEntity.ok().build();
     }
+    
     // Leer todos los usuarios
     @GetMapping
     public List<Animal> readAll() {

@@ -15,13 +15,21 @@ import javax.persistence.Table;
 public class Gender {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name ="id_gender")
-    Long igGender;
+    Long idGender;
 
-    @Column(name="gender")
+    
+    @Column (name="gender")
     String gender;
+    
+    public Long getIdGender() {
+        return idGender;
+    }
 
+    public void setIdGender(Long idGender) {
+        this.idGender = idGender;
+    }
 
     public String getGender() {
         return gender;
@@ -34,16 +42,11 @@ public class Gender {
     public Gender() {
     }
 
-    public void setIgGender(Long igGender) {
-        this.igGender = igGender;
+    public void setIgGender(Long idGender) {
+        this.idGender = idGender;
     }
 
-    public void setAnimals(List<Animal> animals) {
-        this.animals = animals;
-    }
-
-
-    @OneToMany(mappedBy ="gender")
+    @OneToMany(mappedBy = "gender")
     private List<Animal> animals;
-    
+
 }

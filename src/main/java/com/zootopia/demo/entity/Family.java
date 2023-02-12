@@ -1,21 +1,14 @@
 package com.zootopia.demo.entity;
 
 import java.util.List;
-
-// import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-// import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-// import javax.persistence.JoinColumn;
-// import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-// import com.fasterxml.jackson.annotation.JsonBackReference;
-// import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "families")
@@ -24,22 +17,22 @@ public class Family {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_family")
-    Long id;
+    Long idFamily;
 
     @Column(name = "name")
     String name;
 
 
-    public Long getId() {
-        return id;
+    public Long getIdFamily() {
+        return idFamily;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdFamily(Long id) {
+        this.idFamily = id;
     }
 
     public Family(Long id, String name, List<Animal> animals) {
-        this.id = id;
+        this.idFamily = id;
         this.name = name;
         this.animals = animals;
     }
