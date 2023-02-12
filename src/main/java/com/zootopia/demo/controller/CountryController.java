@@ -25,12 +25,12 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
-    @PostMapping(value= "/{animalId}/country" , consumes="application/*" )
+    @PostMapping(value= "/country" , consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Country country) {
         return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country));
     }
 
-    @GetMapping("/countries/{id}") 
+    @GetMapping("/country/{id}") 
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Country> oCountry = countryService.findById(id);
         if(!oCountry.isPresent()){
@@ -39,7 +39,7 @@ public class CountryController {
         return ResponseEntity.ok(oCountry);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
     }
     // Actualizar usuario
-    @PutMapping("/countries/{id}")
+    @PutMapping("/country/{id}")
     public ResponseEntity<?> update(@RequestBody Country countryDetails, @PathVariable Long id){
         Optional<Country> country = countryService.findById(id);
         if(!country.isPresent()){
@@ -51,7 +51,7 @@ public class CountryController {
     }
     
 
-    @DeleteMapping("/countries/{id}")
+    @DeleteMapping("/country/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!countryService.findById(id).isPresent()) {
             return ResponseEntity.notFound().build();
