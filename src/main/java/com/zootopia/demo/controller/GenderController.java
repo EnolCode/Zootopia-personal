@@ -33,9 +33,9 @@ public class GenderController {
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Gender> oGender = genderService.findById(id);
         if(!oGender.isPresent()){
-            return ResponseEntity.notFound().build(); // Si el usuario no es encontrado por el id deveulve un not found
+            return ResponseEntity.notFound().build(); 
         }
-        return ResponseEntity.ok(oGender);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
+        return ResponseEntity.ok(oGender);  
     }
 
     @PutMapping("/gender/{id}")

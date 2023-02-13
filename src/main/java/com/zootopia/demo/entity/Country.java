@@ -1,5 +1,8 @@
 package com.zootopia.demo.entity;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,11 +36,18 @@ public String getCountry() {
     return country;
 }
 
+public Country() {
+    
+}
 public void setCountry(String country) {
     this.country = country;
 }
 
-@OneToMany(mappedBy = "country")
+public Country(List<Animal> animals) {
+    this.animals = animals;
+}
+
+@OneToMany(mappedBy = "country", cascade=CascadeType.ALL)
 private List<Animal> animals;
 
 }

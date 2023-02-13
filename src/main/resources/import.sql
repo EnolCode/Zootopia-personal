@@ -1,11 +1,28 @@
 INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
+INSERT INTO animals (id,date,name) VALUES (default,'2008-12-01','pepe')
 
+
+INSERT INTO families (id_family,family) VALUES (default,'Reptiles')
+INSERT INTO families (id_family,family) VALUES (default,'Reptiles')
 INSERT INTO families (id_family,family) VALUES (default,'Reptiles')
 
 INSERT INTO countries (id_country,country) VALUES (default,'Burkina Faso')
+INSERT INTO countries (id_country,country) VALUES (default,'Burkina Faso')
+INSERT INTO countries (id_country,country) VALUES (default,'Burkina Faso')
 
 INSERT INTO genders (id_gender, gender) VALUES (default,'Female')
+INSERT INTO genders (id_gender, gender) VALUES (default,'Female')
+INSERT INTO genders (id_gender, gender) VALUES (default,'Female')
 
+INSERT INTO types (id_type, type) VALUES (default,'Cocodrile')
+INSERT INTO types (id_type, type) VALUES (default,'Cocodrile')
 INSERT INTO types (id_type, type) VALUES (default,'Cocodrile')
 
 UPDATE animals SET family_id = 1

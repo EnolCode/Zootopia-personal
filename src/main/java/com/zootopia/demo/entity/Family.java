@@ -1,6 +1,8 @@
 package com.zootopia.demo.entity;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,12 +33,6 @@ public class Family {
         this.idFamily = id;
     }
 
-
-    public Family(Long id, String family, List<Animal> animals) {
-        this.idFamily = id;
-        this.family = family;
-        this.animals = animals;
-    }
     public Family() {
        
     }
@@ -49,6 +45,6 @@ public class Family {
         this.family = name;
     }
 
-    @OneToMany(mappedBy = "family")
+    @OneToMany(mappedBy = "family",cascade=CascadeType.ALL)
     private List<Animal> animals;
 }

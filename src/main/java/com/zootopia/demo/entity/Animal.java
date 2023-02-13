@@ -1,7 +1,10 @@
 package com.zootopia.demo.entity;
 import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -9,12 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.GenerationType;
 
-
-
 @Entity
 @Table(name = "animals")
 public class Animal {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,11 +26,6 @@ public class Animal {
     private Date date;
 
     public Animal() {
-    }
-
-    public Animal(String name, Date date) {
-        this.name = name;
-        this.date = date;
     }
 
     public String getName() {
@@ -92,20 +87,21 @@ public class Animal {
         this.type = type;
     }
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "family_id", nullable = true)
     Family family;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name= "gender_id" , nullable = true)
     Gender gender;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)    
     @JoinColumn(name= "country_id" , nullable = true)
     Country country;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name= "type_id", nullable = true)
     Type type;
+
 }
