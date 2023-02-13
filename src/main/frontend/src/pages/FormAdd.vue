@@ -22,9 +22,41 @@ const onSubmit = async () => {
     url: "http://localhost:8080/api/animals/",
 
     data: {
-      name: nameModel.value,
-      type: typeModel.value,
-      gender: genderModel.value,
+      name: nameModel.value
+      // type: typeModel.value,
+      // gender: genderModel.value,
+      // country: countryModel.value,
+    },
+  })
+  axios({
+    method: "POST",
+    url: "http://localhost:8080/api/type/",
+
+    data: {
+      type: typeModel.value
+      // gender: genderModel.value,
+      // country: countryModel.value,
+    },
+  })
+  axios({
+    method: "POST",
+    url: "http://localhost:8080/api/gender/",
+
+    data: {
+      // name: nameModel.value,
+      // type: typeModel.value,
+      gender: genderModel.value
+      // country: countryModel.value,
+    },
+  })
+  axios({
+    method: "POST",
+    url: "http://localhost:8080/api/country/",
+
+    data: {
+      // name: nameModel.value,
+      // type: typeModel.value,
+      // gender: genderModel.value,
       country: countryModel.value,
     },
   })

@@ -15,13 +15,3 @@ export const transformData = (data) => {
   });
 };
 
-// export const deleteRow =  async(selected,url) => {
-
-//   axios.delete(url + selected[0].id)
-//   .then((res) => {
-//       const index = rows.value.findIndex( row => row.id === selected[0].id);
-//       rows.value.splice(index, 1);
-//     })
-//     .catch((err) => console.log(err));
-
-// };
