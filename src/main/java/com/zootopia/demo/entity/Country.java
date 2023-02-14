@@ -32,6 +32,11 @@ public void setIdCountry(Long idCountry) {
     this.idCountry = idCountry;
 }
 
+public Country( String country) {
+    
+    this.country = country;
+}
+
 public String getCountry() {
     return country;
 }

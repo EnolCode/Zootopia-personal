@@ -25,6 +25,9 @@ public class Animal {
     @Column(length = 50, nullable = true)
     private Date date;
 
+    @Column(length = 50, nullable = true)
+    private String gender;
+
     public Animal() {
     }
 
@@ -44,7 +47,9 @@ public class Animal {
         this.name = name;
     }
 
-   
+    public String getGender() {
+        return gender;
+    }
 
     public Family getFamily() {
         return family;
@@ -70,15 +75,6 @@ public class Animal {
         this.country = country;
     }
 
-    
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-    
     public Type getType() {
         return type;
     }
@@ -91,17 +87,17 @@ public class Animal {
     @JoinColumn(name = "family_id", nullable = true)
     Family family;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinColumn(name= "gender_id" , nullable = true)
-    Gender gender;
+   
 
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)    
-    @JoinColumn(name= "country_id" , nullable = true)
+    @JoinColumn(name= "country_id" , nullable = true, referencedColumnName = "id_country")
     Country country;
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name= "type_id", nullable = true)
     Type type;
+
+    
 
 }
