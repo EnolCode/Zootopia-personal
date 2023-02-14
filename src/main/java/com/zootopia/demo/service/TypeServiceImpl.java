@@ -8,44 +8,45 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.zootopia.demo.entity.Animal;
-import com.zootopia.demo.repository.AnimalRepository;
+import com.zootopia.demo.entity.Type;
+import com.zootopia.demo.repository.TypeRepository;
+
 
 @Service
-public class AnimalServiceImpl implements AnimalService {
+public class TypeServiceImpl implements TypeService {
 
     @Autowired 
-    private AnimalRepository animalRepository;
+    private TypeRepository typeRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public List<Animal> findAll() {
+    public List<Type> findAll() {
 
-        return animalRepository.findAll();
+        return typeRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Page<Animal> findAll(Pageable pageable) {
-        return animalRepository.findAll(pageable);
+    public Page<Type> findAll(Pageable pageable) {
+        return typeRepository.findAll(pageable);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<Animal> findById(Long id) {
-        return animalRepository.findById(id);
+    public Optional<Type> findById(Long id) {
+        return typeRepository.findById(id);
     }
 
     @Transactional
     @Override
-    public Animal save(Animal animal) {
-        return animalRepository.save(animal);
+    public Type save(Type type) {
+        return typeRepository.save(type);
     }
 
     @Transactional
     @Override
     public void deleteById(Long id) {
-        animalRepository.deleteById(id);
+        typeRepository.deleteById(id);
     }
     
 }

@@ -1,81 +1,111 @@
 package com.zootopia.demo.entity;
-
 import java.sql.Date;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.GenerationType;
 
-@Entity 
+
+
+@Entity
 @Table(name = "animals")
 public class Animal {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(length = 50, nullable = false)
     private String name;
-    
-    @Column(nullable = true, length = 50)
+
+    @Column(length = 50, nullable = true)
     private Date date;
 
-    @OneToMany(mappedBy="family")
-    List<Family> familyAnimal;
-
-    @OneToMany(mappedBy="type")
-    List<Type> typeAnimal;
-
-    public void setId(Long id) {
-        this.id = id;
+    public Animal() {
     }
 
-
-    public Date getDate() {
-        return date;
-    }
-
-
-    public void setDate(Date date) {
+    public Animal(String name, Date date) {
+        this.name = name;
         this.date = date;
     }
 
-
-    public List<Family> getFamilyAnimal() {
-        return familyAnimal;
+    public String getName() {
+        return name;
     }
-
-
-    public void setFamilyAnimal(List<Family> familyAnimal) {
-        this.familyAnimal = familyAnimal;
-    }
-
-
-    public List<Type> getTypeAnimal() {
-        return typeAnimal;
-    }
-
-
-    public void setTypeAnimal(List<Type> typeAnimal) {
-        this.typeAnimal = typeAnimal;
-    }
-
 
     public Long getId() {
         return id;
     }
 
-
-    public String getName() {
-        return name;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+   
+
+    public Family getFamily() {
+        return family;
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+    
+    public Type getType() {
+        return type;
+    }
+    
+    public void setType(Type type) {
+        this.type = type;
+    }
+    
+    @ManyToOne
+    @JoinColumn(name = "family_id", nullable = true)
+    Family family;
+
+    @ManyToOne
+    @JoinColumn(name= "gender_id" , nullable = true)
+    Gender gender;
+
+    @ManyToOne
+    @JoinColumn(name= "country_id" , nullable = true)
+    Country country;
+
+
+    @ManyToOne
+    @JoinColumn(name= "type_id", nullable = true)
+    Type type;
 }

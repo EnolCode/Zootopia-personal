@@ -1,20 +1,17 @@
 package com.zootopia.demo.entity;
-import java.util.List;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
-
-@Entity 
-@Table(name = "familys")
+@Entity
+@Table(name = "families")
 public class Family {
 
     @Id
@@ -22,28 +19,36 @@ public class Family {
     @Column(name = "id_family")
     Long idFamily;
 
-
     @Column(name = "family")
     String family;
 
-    @OneToMany(mappedBy="family")
-    List<Family> familyAnimal;
-   
 
     public Long getIdFamily() {
         return idFamily;
     }
-    public void setIdFamily(Long idFamily) {
-        this.idFamily = idFamily;
+
+    public void setIdFamily(Long id) {
+        this.idFamily = id;
     }
+
+
+    public Family(Long id, String family, List<Animal> animals) {
+        this.idFamily = id;
+        this.family = family;
+        this.animals = animals;
+    }
+    public Family() {
+       
+    }
+
     public String getFamily() {
         return family;
     }
-    public void setFamily(String family) {
-        this.family = family;
+
+    public void setFamily(String name) {
+        this.family = name;
     }
-    
-   
-   
-   
+
+    @OneToMany(mappedBy = "family")
+    private List<Animal> animals;
 }

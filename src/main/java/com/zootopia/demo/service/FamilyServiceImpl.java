@@ -7,45 +7,44 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.zootopia.demo.entity.Animal;
-import com.zootopia.demo.repository.AnimalRepository;
+import com.zootopia.demo.entity.Family;
+import com.zootopia.demo.repository.FamilyRepository;
 
 @Service
-public class AnimalServiceImpl implements AnimalService {
+public class FamilyServiceImpl implements FamilyService {
 
     @Autowired 
-    private AnimalRepository animalRepository;
+    private FamilyRepository familyRepository;
 
     @Override
     @Transactional(readOnly = true)
-    public List<Animal> findAll() {
+    public List<Family> findAll() {
 
-        return animalRepository.findAll();
+        return familyRepository.findAll();
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Page<Animal> findAll(Pageable pageable) {
-        return animalRepository.findAll(pageable);
+    public Page<Family> findAll(Pageable pageable) {
+        return familyRepository.findAll(pageable);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<Animal> findById(Long id) {
-        return animalRepository.findById(id);
+    public Optional<Family> findById(Long id) {
+        return familyRepository.findById(id);
     }
 
     @Transactional
     @Override
-    public Animal save(Animal animal) {
-        return animalRepository.save(animal);
+    public Family save(Family family) {
+        return familyRepository.save(family);
     }
 
     @Transactional
     @Override
     public void deleteById(Long id) {
-        animalRepository.deleteById(id);
+        familyRepository.deleteById(id);
     }
     
 }
