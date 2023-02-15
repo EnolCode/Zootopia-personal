@@ -50,6 +50,9 @@ public void setCountry(String country) {
 
 public Country(List<Animal> animals) {
     this.animals = animals;
+    for(Animal animal : animals){
+        animal.setCountry(this);
+    }
 }
 
 @OneToMany(mappedBy = "country", cascade=CascadeType.ALL)

@@ -97,7 +97,4 @@ public class Animal {
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name= "type_id", nullable = true)
     Type type;
-
-    
-
 }
