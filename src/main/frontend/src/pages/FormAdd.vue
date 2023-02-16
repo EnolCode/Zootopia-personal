@@ -23,39 +23,40 @@ const onSubmit = async () => {
 
     data: {
       name: nameModel.value,
-      // type: typeModel.value,
-      gender: genderModel.value
-      // country: countryModel.value,
-    },
-  })
-  axios({
-    method: "POST",
-    url: "http://localhost:8080/api/type/",
-
-    data: {
-      type: typeModel.value
-      // gender: genderModel.value,
-      // country: countryModel.value,
-    },
-  })
-  axios({
-    method: "POST",
-    url: "http://localhost:8080/api/country/",
-
-    data: {
-      // name: nameModel.value,
-      // type: typeModel.value,
-      // gender: genderModel.value,
+      type: typeModel.value,
+      gender: genderModel.value,
       country: countryModel.value,
     },
   })
+  // axios({
+  //   method: "POST",
+  //   url: "http://localhost:8080/api/type/",
+
+  //   data: {
+  //     type: typeModel.value
+  //     // gender: genderModel.value,
+  //     // country: countryModel.value,
+  //   },
+  // })
+  // axios({
+  //   method: "POST",
+  //   url: "http://localhost:8080/api/country/",
+
+  //   data: {
+  //     // name: nameModel.value,
+  //     // type: typeModel.value,
+  //     // gender: genderModel.value,
+  //     country: countryModel.value,
+  //   },
+  // })
     .then((res) =>
       $q.notify({
         type: "positive",
         message: "Animal added successfully!",
         icon: "fa-solid fa-circle-check",
       })
-    )
+      )
+      // console.log(data)
     .catch((err) => console.log(err));
   onReset();
 };

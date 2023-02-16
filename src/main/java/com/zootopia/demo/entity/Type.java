@@ -1,15 +1,15 @@
 package com.zootopia.demo.entity;
-
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
+import javax.persistence.*;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table (name="types")
 public class Type {
@@ -22,30 +22,12 @@ Long idType;
 @Column()
 String type;
 
-
-public Long getIdType() {
-    return idType;
-}
-
-
-public void setIdType(Long idType) {
-    this.idType = idType;
-}
-
-
-public String getType() {
-    return type;
-}
-
-
-public void setType(String type) {
-    this.type = type;
-}
-
-
-public Type() {
-}
-
 @OneToMany(mappedBy ="type")
     private List<Animal> animals;
+
+@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+@JoinColumn(name = "family_id", nullable = true)
+Family family;
+
+
 }

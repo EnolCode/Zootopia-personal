@@ -8,13 +8,13 @@ const urlAnimal = "http://localhost:8080/api/animals";
 let selected = ref([]);
 
 
-onMounted(() => {
-  axios
+onMounted(async() => {
+  await axios
   .get(urlAnimal)
   .then((response) => {
-    const transformedData = transformData(response.data);
-    rows.value = transformedData;
     console.log(response.data)
+    const transformedData =  transformData(response.data);
+    rows.value =  transformedData;
   });
 })
 
