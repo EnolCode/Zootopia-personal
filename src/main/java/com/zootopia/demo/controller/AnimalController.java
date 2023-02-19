@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -34,6 +35,7 @@ public class AnimalController {
         return ResponseEntity.ok(oAnimal);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
     }
     // Actualizar usuario
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Animal animalDetails, @PathVariable Long id){
         Optional<Animal> animal = animalService.findById(id);
@@ -62,10 +64,5 @@ public class AnimalController {
     @GetMapping
     public List<Animal> readAll() {
         return animalService.findAll();
-
-        /* List<Animal> animals =  StreamSupport
-                    .stream(animalService.findAll().spliterator(),false) // Nos recorre todos los usuarios secuancialemnte en vez de paralelo(por eso pusimos el false) JAVA 8 Stream
-                    .collect(Collectors.toList());  // Para pasarlo a una lista
-    return animals; */
     }
 }
