@@ -1,7 +1,6 @@
 package com.zootopia.demo.entity;
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,14 +50,6 @@ public class Animal {
         return gender;
     }
 
-    public Family getFamily() {
-        return family;
-    }
-
-    public void setFamily(Family family) {
-        this.family = family;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -82,10 +73,6 @@ public class Animal {
     public void setType(Type type) {
         this.type = type;
     }
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "family_id", nullable = true)
-    Family family;
 
    
     @ManyToOne(fetch = FetchType.EAGER)    

@@ -14,7 +14,6 @@ onMounted(() => {
   .then((response) => {
     const transformedData = transformData(response.data);
     rows.value = transformedData;
-    console.log(response.data)
   });
 })
 
@@ -52,14 +51,6 @@ const columns = [
     name: "type",
     label: "Type",
     field: "type",
-    align: "center",
-    sortable: true,
-  },
-
-  {
-    name: "family",
-    label: "Family",
-    field: "family",
     align: "center",
     sortable: true,
   },

@@ -8,13 +8,52 @@ const router = useRouter();
 
 const $q = useQuasar();
 
-const options = [{ value: 1, label: "Male" },{ value: 2, label: "Female" }];
-const optionsCountry = [ { value: 1, label: "Spain" },{ value: 2, label: "South Africa" },{ value: 3, label: "Belgium" }, { value: 4, label: "India" }, { value: 5, label: "Jamaica"},{ value: 6, label: "French"}];
+const options = [
+  { value: "Male", label: "Male" },
+  { value: "Female", label: "Female" },
+];
+const optionsCountry = [
+  { value: 1, label: "Spain" },
+  { value: 2, label: "South Africa" },
+  { value: 3, label: "Belgium" },
+  { value: 4, label: "India" },
+  { value: 5, label: "Jamaica" },
+  { value: 6, label: "French" },
+];
+
+const optionsType = [
+  { value: 1, label: "Lion" },
+  { value: 2, label: "Tiger Africa" },
+  { value: 3, label: "Orangutan" },
+  { value: 4, label: "Iguana" },
+  { value: 5, label: "leopard" },
+  { value: 6, label: "Rhino" },
+  { value: 7, label: "Fox" },
+  { value: 8, label: "Snake" },
+  { value: 9, label: "Bear" },
+  { value: 10, label: "Crocodile" },
+  { value: 11, label: "Wolf" },
+  { value: 12, label: "Jaguar" },
+  { value: 13, label: "Leopard" },
+  { value: 14, label: "Gorilla" },
+  { value: 15, label: "Chimpanzee" },
+  { value: 16, label: "weasel" },
+  { value: 17, label: "jackal" },
+  { value: 18, label: "otter" },
+];
+
+
+const selectRule = (val) => {
+  if (!val) {
+    return "You must make a selection!";
+  }
+};
 
 let nameModel = ref("");
 let typeModel = ref("");
 let genderModel = ref("");
 let countryModel = ref("");
+let dateModel = ref("");
 
 const onSubmit = async () => {
   axios({
@@ -24,22 +63,14 @@ const onSubmit = async () => {
     data: {
       name: nameModel.value,
       gender: genderModel.value,
-    },
-  })
-  axios({
-    method: "POST",
-    url: "http://localhost:8080/api/type/",
+      date: dateModel.value,
+      country: {
+        idCountry: 1,
+      },
+      type:{
+        idType: 2,
+      }
 
-    data: {
-      type: typeModel.value
-    },
-  })
-  axios({
-    method: "POST",
-    url: "http://localhost:8080/api/country/",
-
-    data: {
-      country: countryModel.value,
     },
   })
     .then((res) =>
@@ -61,9 +92,7 @@ const onReset = () => {
 };
 </script>
 <template>
-
-<q-page class="row justify-between bg-brown-1">
-
+  <q-page class="row justify-between bg-brown-1">
     <div class="nav q-pa-md q-gutter-sm bg-grey-3">
       <q-breadcrumbs>
         <q-breadcrumbs-el
@@ -81,12 +110,10 @@ const onReset = () => {
       style="height: 95vh"
     />
 
-    <div class="row col-12 col-md-5 col-lg-5 col-xl-5 justify-center items-center">
-      <q-form
-        @submit="onSubmit"
-        @reset="onReset"
-        class="q-gutter-lg col-8 "
-      >
+    <div
+      class="row col-12 col-md-5 col-lg-5 col-xl-5 justify-center items-center"
+    >
+      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-lg col-8">
         <span class="title text-h3 text-weight-bold">Add Animal</span>
         <q-input
           filled
@@ -99,24 +126,14 @@ const onReset = () => {
           ]"
         />
 
-        <q-input
-          filled
-          v-model="typeModel"
-          label="Type"
-          type="text"
-          lazy-rules="ondemand"
-          :rules="[
-            (typeModel) =>
-              (typeModel && typeModel.length > 3) || 'This field is required',
-          ]"
-        />
-
         <q-select
           filled
-          v-model="genderModel"
-          :options="options"
-          label="Gender"
-          required
+          v-model="typeModel"
+          :options="optionsType"
+          label="type"
+          lazy-rules="ondemand"
+          :rules="[selectRule]"
+          behavior="menu"
         />
 
         <q-select
@@ -124,10 +141,26 @@ const onReset = () => {
           v-model="countryModel"
           :options="optionsCountry"
           label="Country"
-          required
+          lazy-rules="ondemand"
+          :rules="[selectRule]"
+          behavior="menu"
+
+
         />
 
+        <q-input v-model="dateModel" filled type="date" hint="Date of admission" />
 
+        <div class="q-pa-sm">
+          <q-option-group
+            v-model="genderModel"
+            :options="options"
+            color="brown"
+            inline
+            dense
+            :rules="[selectRule]"
+
+          />
+        </div>
         <div class="column justify-end">
           <q-btn
             label="Reset"
@@ -140,8 +173,6 @@ const onReset = () => {
         </div>
       </q-form>
     </div>
-
-
   </q-page>
 </template>
 
@@ -150,11 +181,11 @@ const onReset = () => {
   border: 1px solid $brown;
 }
 
-.nav{
+.nav {
   width: 100vw;
 }
 
-.title{
+.title {
   color: $brown;
 }
 </style>
