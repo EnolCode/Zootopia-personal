@@ -10,7 +10,7 @@ export const transformData = (data) => {
       country: item.country.country,
       type: item.type.type,
       family: item.family.family,
-      gender: item.gender.gender,
+      gender: item.gender
     };
   });
 };

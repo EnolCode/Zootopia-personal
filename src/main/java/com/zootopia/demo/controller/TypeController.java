@@ -34,9 +34,9 @@ public class TypeController {
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Type> oType = typeService.findById(id);
         if(!oType.isPresent()){
-            return ResponseEntity.notFound().build(); // Si el usuario no es encontrado por el id deveulve un not found
+            return ResponseEntity.notFound().build(); 
         }
-        return ResponseEntity.ok(oType);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
+        return ResponseEntity.ok(oType);  
     }
 
     @PutMapping("/type/{id}")

@@ -48,5 +48,4 @@ public Type() {
 
 @OneToMany(mappedBy ="type")
     private List<Animal> animals;
-    
 }

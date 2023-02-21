@@ -5,7 +5,7 @@ import  { transformData }  from "../functions/functions.js"
 
 const rows = ref([]);
 const urlAnimal = "http://localhost:8080/api/animals";
-let selected = ref([]);
+let selected = ref();
 
 
 onMounted(() => {
@@ -14,6 +14,7 @@ onMounted(() => {
   .then((response) => {
     const transformedData = transformData(response.data);
     rows.value = transformedData;
+    console.log(response.data)
   });
 })
 

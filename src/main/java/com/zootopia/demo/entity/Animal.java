@@ -1,7 +1,10 @@
 package com.zootopia.demo.entity;
 import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
 import javax.persistence.Id;
@@ -9,12 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.GenerationType;
 
-
-
 @Entity
 @Table(name = "animals")
 public class Animal {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,12 +25,10 @@ public class Animal {
     @Column(length = 50, nullable = true)
     private Date date;
 
-    public Animal() {
-    }
+    @Column(length = 50, nullable = true)
+    private String gender;
 
-    public Animal(String name, Date date) {
-        this.name = name;
-        this.date = date;
+    public Animal() {
     }
 
     public String getName() {
@@ -49,7 +47,9 @@ public class Animal {
         this.name = name;
     }
 
-   
+    public String getGender() {
+        return gender;
+    }
 
     public Family getFamily() {
         return family;
@@ -75,15 +75,6 @@ public class Animal {
         this.country = country;
     }
 
-    
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-    
     public Type getType() {
         return type;
     }
@@ -92,20 +83,17 @@ public class Animal {
         this.type = type;
     }
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "family_id", nullable = true)
     Family family;
 
-    @ManyToOne
-    @JoinColumn(name= "gender_id" , nullable = true)
-    Gender gender;
-
-    @ManyToOne
-    @JoinColumn(name= "country_id" , nullable = true)
+   
+    @ManyToOne(fetch = FetchType.EAGER)    
+    @JoinColumn(name= "country_id" , nullable = true, referencedColumnName = "id_country")
     Country country;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "type_id", nullable = true)
     Type type;
 }
