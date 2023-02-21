@@ -83,18 +83,17 @@ public class Animal {
         this.type = type;
     }
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "family_id", nullable = true)
     Family family;
 
    
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)    
+    @ManyToOne(fetch = FetchType.EAGER)    
     @JoinColumn(name= "country_id" , nullable = true, referencedColumnName = "id_country")
     Country country;
 
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name= "type_id", nullable = true)
     Type type;
 }

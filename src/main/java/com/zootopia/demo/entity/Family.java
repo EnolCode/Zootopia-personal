@@ -17,11 +17,11 @@ import javax.persistence.Table;
 public class Family {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id_family")
     Long idFamily;
 
-    @Column(name = "family")
+    @Column()
     String family;
 
 
@@ -29,8 +29,8 @@ public class Family {
         return idFamily;
     }
 
-    public void setIdFamily(Long id) {
-        this.idFamily = id;
+    public void setIdFamily(Long idFamily) {
+        this.idFamily = idFamily;
     }
 
     public Family() {
@@ -41,10 +41,10 @@ public class Family {
         return family;
     }
 
-    public void setFamily(String name) {
-        this.family = name;
+    public void setFamily(String family) {
+        this.family = family;
     }
 
-    @OneToMany(mappedBy = "family",cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "family")
     private List<Animal> animals;
 }
