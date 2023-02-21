@@ -8,8 +8,8 @@ const router = useRouter();
 
 const $q = useQuasar();
 
-const gender = ref(null);
-const options = ["Male", "Female"];
+const options = [{ value: 1, label: "Male" },{ value: 2, label: "Female" }];
+const optionsCountry = [ { value: 1, label: "Spain" },{ value: 2, label: "South Africa" },{ value: 3, label: "Belgium" }, { value: 4, label: "India" }, { value: 5, label: "Jamaica"},{ value: 6, label: "French"}];
 
 let nameModel = ref("");
 let typeModel = ref("");
@@ -23,9 +23,7 @@ const onSubmit = async () => {
 
     data: {
       name: nameModel.value,
-      // type: typeModel.value,
-      gender: genderModel.value
-      // country: countryModel.value,
+      gender: genderModel.value,
     },
   })
   axios({
@@ -34,8 +32,6 @@ const onSubmit = async () => {
 
     data: {
       type: typeModel.value
-      // gender: genderModel.value,
-      // country: countryModel.value,
     },
   })
   axios({
@@ -43,9 +39,6 @@ const onSubmit = async () => {
     url: "http://localhost:8080/api/country/",
 
     data: {
-      // name: nameModel.value,
-      // type: typeModel.value,
-      // gender: genderModel.value,
       country: countryModel.value,
     },
   })
@@ -126,16 +119,14 @@ const onReset = () => {
           required
         />
 
-        <q-input
+        <q-select
           filled
           v-model="countryModel"
-          label="country"
-          type="text"
-          lazy-rules="ondemand"
-          :rules="[
-            (val) => (val && val.length > 3) || 'This field is required',
-          ]"
+          :options="optionsCountry"
+          label="Country"
+          required
         />
+
 
         <div class="column justify-end">
           <q-btn
