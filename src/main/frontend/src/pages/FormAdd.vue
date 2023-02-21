@@ -22,12 +22,26 @@ const optionsCountry = [
 ];
 
 const optionsType = [
-  { value: 1, label: "Feline" },
-  { value: 2, label: "Canid" },
-  { value: 3, label: "leporidae" },
-  { value: 4, label: "mustelid" },
-  { value: 5, label: "Reptil" },
+  { value: 1, label: "Lion" },
+  { value: 2, label: "Tiger Africa" },
+  { value: 3, label: "Orangutan" },
+  { value: 4, label: "Iguana" },
+  { value: 5, label: "leopard" },
+  { value: 6, label: "Rhino" },
+  { value: 7, label: "Fox" },
+  { value: 8, label: "Snake" },
+  { value: 9, label: "Bear" },
+  { value: 10, label: "Crocodile" },
+  { value: 11, label: "Wolf" },
+  { value: 12, label: "Jaguar" },
+  { value: 13, label: "Leopard" },
+  { value: 14, label: "Gorilla" },
+  { value: 15, label: "Chimpanzee" },
+  { value: 16, label: "weasel" },
+  { value: 17, label: "jackal" },
+  { value: 18, label: "otter" },
 ];
+
 
 const selectRule = (val) => {
   if (!val) {
@@ -39,6 +53,7 @@ let nameModel = ref("");
 let typeModel = ref("");
 let genderModel = ref("");
 let countryModel = ref("");
+let dateModel = ref("");
 
 const onSubmit = async () => {
   axios({
@@ -48,6 +63,7 @@ const onSubmit = async () => {
     data: {
       name: nameModel.value,
       gender: genderModel.value,
+      date: dateModel.value,
       country: {
         idCountry: 1,
       },
@@ -117,6 +133,7 @@ const onReset = () => {
           label="type"
           lazy-rules="ondemand"
           :rules="[selectRule]"
+          behavior="menu"
         />
 
         <q-select
@@ -126,8 +143,12 @@ const onReset = () => {
           label="Country"
           lazy-rules="ondemand"
           :rules="[selectRule]"
+          behavior="menu"
+
 
         />
+
+        <q-input v-model="dateModel" filled type="date" hint="Date of admission" />
 
         <div class="q-pa-sm">
           <q-option-group
