@@ -25,7 +25,7 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
-    @PostMapping(value= "/country" , consumes="application/*" )
+    @PostMapping(value= "country" , consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Country country) {
         return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country));
     }

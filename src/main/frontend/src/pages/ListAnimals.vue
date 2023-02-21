@@ -56,13 +56,13 @@ const columns = [
     sortable: true,
   },
 
-  {
-    name: "family",
-    label: "Family",
-    field: "family",
-    align: "center",
-    sortable: true,
-  },
+  // {
+  //   name: "family",
+  //   label: "Family",
+  //   field: "family",
+  //   align: "center",
+  //   sortable: true,
+  // },
 
   {
     name: "gender",

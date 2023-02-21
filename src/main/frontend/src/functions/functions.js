@@ -9,7 +9,6 @@ export const transformData = (data) => {
       date: item.date,
       country: item.country.country,
       type: item.type.type,
-      family: item.family.family,
       gender: item.gender
     };
   });

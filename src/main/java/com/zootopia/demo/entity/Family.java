@@ -45,6 +45,4 @@ public class Family {
         this.family = family;
     }
 
-    @OneToMany(mappedBy = "family")
-    private List<Animal> animals;
 }

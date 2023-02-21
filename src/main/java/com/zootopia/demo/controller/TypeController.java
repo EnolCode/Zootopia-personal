@@ -20,7 +20,7 @@ import com.zootopia.demo.service.TypeService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class TypeController {
     @Autowired
     private TypeService typeService;
