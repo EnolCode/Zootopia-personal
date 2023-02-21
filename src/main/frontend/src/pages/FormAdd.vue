@@ -106,12 +106,11 @@ const onReset = () => {
     <q-img
       src="https://3.bp.blogspot.com/-2F5CBcSeVbs/VtVvzRarBYI/AAAAAAAAMHA/1F30Ax_zWks/s1600/zootopia-zootropolis-poster.jpg"
       spinner-color="white"
-      class="col-0 col-xl-7 col-lg-7 col-md-7"
+      class="col-sm-6 col-md-7 col-lg-7 gt-xs"
       style="height: 95vh"
     />
 
-    <div
-      class="row col-12 col-md-5 col-lg-5 col-xl-5 justify-center items-center"
+    <div class="container-form row col-12 col-sm-6 col-md-5 col-lg-5 col-xl-5 flex-center"
     >
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-lg col-8">
         <span class="title text-h3 text-weight-bold">Add Animal</span>
@@ -177,6 +176,7 @@ const onReset = () => {
 </template>
 
 <style lang="scss" scoped>
+@use "../css/mixins.scss" as m;
 .btn-reset {
   border: 1px solid $brown;
 }
@@ -187,5 +187,20 @@ const onReset = () => {
 
 .title {
   color: $brown;
+  @include m.mv(850px){
+                  font-size: 2em;
+          }
+
+  @include m.mv(500px){
+                  font-size: 2.5em;
+          }
 }
+
+.container-form {
+  @include m.mv(600px){
+                  align-items: start;
+          }
+
+}
+
 </style>
