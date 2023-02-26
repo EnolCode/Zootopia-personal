@@ -14,34 +14,37 @@ const options = [
 ];
 const optionsCountry = [
   { value: 1, label: "Spain" },
-  { value: 2, label: "South Africa" },
+  { value: 2, label: "French" },
   { value: 3, label: "Belgium" },
-  { value: 4, label: "India" },
-  { value: 5, label: "Jamaica" },
-  { value: 6, label: "French" },
+  { value: 4, label: "Australia" },
+  { value: 5, label: "Canada" },
+  { value: 6, label: "India" },
+  { value: 7, label: "Ireland" },
+  { value: 8, label: "Jamaica" },
+  { value: 9, label: "New Zealand" },
+  { value: 10, label: "Singapore" },
+  { value: 11, label: "South Africa" },
+  { value: 12, label: "United Kingdom" },
+  { value: 13, label: "United States" },
 ];
 
 const optionsType = [
   { value: 1, label: "Lion" },
-  { value: 2, label: "Tiger Africa" },
+  { value: 2, label: "Tiger" },
   { value: 3, label: "Orangutan" },
   { value: 4, label: "Iguana" },
-  { value: 5, label: "leopard" },
-  { value: 6, label: "Rhino" },
-  { value: 7, label: "Fox" },
-  { value: 8, label: "Snake" },
-  { value: 9, label: "Bear" },
-  { value: 10, label: "Crocodile" },
-  { value: 11, label: "Wolf" },
-  { value: 12, label: "Jaguar" },
-  { value: 13, label: "Leopard" },
-  { value: 14, label: "Gorilla" },
-  { value: 15, label: "Chimpanzee" },
-  { value: 16, label: "weasel" },
-  { value: 17, label: "jackal" },
-  { value: 18, label: "otter" },
+  { value: 5, label: "Fox" },
+  { value: 6, label: "Snake" },
+  { value: 7, label: "Crocodile" },
+  { value: 8, label: "Wolf" },
+  { value: 9, label: "Jaguar" },
+  { value: 10, label: "Leopard" },
+  { value: 11, label: "Gorilla" },
+  { value: 12, label: "Chimpanzee" },
+  { value: 13, label: "weasel" },
+  { value: 14, label: "jackal" },
+  { value: 15, label: "otter" },
 ];
-
 
 const selectRule = (val) => {
   if (!val) {
@@ -65,12 +68,11 @@ const onSubmit = async () => {
       gender: genderModel.value,
       date: dateModel.value,
       country: {
-        idCountry: 1,
+        idCountry: countryModel.value.value +1,
       },
-      type:{
-        idType: 2,
-      }
-
+      type: {
+        idType: typeModel.value.value +1,
+      },
     },
   })
     .then((res) =>
@@ -89,6 +91,7 @@ const onReset = () => {
   typeModel.value = "";
   genderModel.value = "";
   countryModel.value = "";
+  dateModel.value = "";
 };
 </script>
 <template>
@@ -143,11 +146,14 @@ const onReset = () => {
           lazy-rules="ondemand"
           :rules="[selectRule]"
           behavior="menu"
-
-
         />
 
-        <q-input v-model="dateModel" filled type="date" hint="Date of admission" />
+        <q-input
+          v-model="dateModel"
+          filled
+          type="date"
+          hint="Date of admission"
+        />
 
         <div class="q-pa-sm">
           <q-option-group
@@ -157,7 +163,6 @@ const onReset = () => {
             inline
             dense
             :rules="[selectRule]"
-
           />
         </div>
         <div class="column justify-end">

@@ -8,6 +8,9 @@ const urlAnimal = "http://localhost:8080/api/animals";
 let selected = ref();
 
 
+
+
+
 onMounted(() => {
   axios
   .get(urlAnimal)
@@ -51,6 +54,14 @@ const columns = [
     name: "type",
     label: "Type",
     field: "type",
+    align: "center",
+    sortable: true,
+  },
+
+  {
+    name: "family",
+    label: "Family",
+    field: "family",
     align: "center",
     sortable: true,
   },
