@@ -91,6 +91,7 @@ const onReset = () => {
   typeModel.value = "";
   genderModel.value = "";
   countryModel.value = "";
+  dateModel.value = "";
 };
 </script>
 <template>
