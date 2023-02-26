@@ -14,17 +14,24 @@ const options = [
 ];
 const optionsCountry = [
   { value: 1, label: "Spain" },
-  { value: 2, label: "South Africa" },
+  { value: 2, label: "French" },
   { value: 3, label: "Belgium" },
-  { value: 4, label: "India" },
-  { value: 5, label: "Jamaica" },
-  { value: 6, label: "French" },
+  { value: 4, label: "Australia" },
+  { value: 5, label: "Canada" },
+  { value: 6, label: "India" },
+  { value: 7, label: "Ireland" },
+  { value: 8, label: "Jamaica" },
+  { value: 9, label: "New Zealand" },
+  { value: 10, label: "Singapore" },
+  { value: 11, label: "South Africa" },
+  { value: 12, label: "United Kingdom" },
+  { value: 13, label: "United States" },
 ];
 
 const optionsType = [
   { value: 1, label: "Lion" },
   { value: 2, label: "Tiger" },
-  { value: 3, label: "Orangutan"},
+  { value: 3, label: "Orangutan" },
   { value: 4, label: "Iguana" },
   { value: 5, label: "Fox" },
   { value: 6, label: "Snake" },
@@ -38,7 +45,6 @@ const optionsType = [
   { value: 14, label: "jackal" },
   { value: 15, label: "otter" },
 ];
-
 
 const selectRule = (val) => {
   if (!val) {
@@ -62,12 +68,11 @@ const onSubmit = async () => {
       gender: genderModel.value,
       date: dateModel.value,
       country: {
-        idCountry: 1,
+        idCountry: countryModel.value.value +1,
       },
-      type:{
-        idType: 2,
-      }
-
+      type: {
+        idType: typeModel.value.value +1,
+      },
     },
   })
     .then((res) =>
@@ -141,11 +146,14 @@ const onReset = () => {
           lazy-rules="ondemand"
           :rules="[selectRule]"
           behavior="menu"
-
-
         />
 
-        <q-input v-model="dateModel" filled type="date" hint="Date of admission" />
+        <q-input
+          v-model="dateModel"
+          filled
+          type="date"
+          hint="Date of admission"
+        />
 
         <div class="q-pa-sm">
           <q-option-group
@@ -155,7 +163,6 @@ const onReset = () => {
             inline
             dense
             :rules="[selectRule]"
-
           />
         </div>
         <div class="column justify-end">
