@@ -5,11 +5,6 @@ import  { transformData }  from "../functions/functions.js"
 
 const rows = ref([]);
 const urlAnimal = "http://localhost:8080/api/animals";
-let selected = ref();
-
-
-
-
 
 onMounted(() => {
   axios
@@ -87,11 +82,11 @@ pagination: ref({
   rowsPerPage: 10,
 });
 
-const deleteAnimal =  async() => {
-
-  axios.delete("http://localhost:8080/api/animals/" + selected.value[0].id)
+const deleteAnimal =  async(props) => {
+console.log(props.id)
+  axios.delete("http://localhost:8080/api/animals/" + props.id)
   .then((res) => {
-      const index = rows.value.findIndex( row => row.id === selected.value[0].id);
+      const index = rows.value.findIndex( row => row.id === props.id);
       rows.value.splice(index, 1);
     })
     .catch((err) => console.log(err));
@@ -116,14 +111,13 @@ const deleteAnimal =  async() => {
       dark
       color="amber"
       selection="single"
-      v-model:selected="selected"
       class="col-8"
       :grid="$q.screen.sm"
       :rows-per-page-options="[10]"
     >
     <template #body-cell-actions="props">
         <q-td key="actions" align="center" >
-              <q-btn name="delete"  icon='delete' size="md" class="q-mr-sm" color="red" @click="deleteAnimal"/>
+              <q-btn name="delete"  icon='delete' size="md" class="q-mr-sm" color="red" @click="deleteAnimal(props.row)"/>
               <q-btn name="modify"  icon='edit' size="md" color="blue"/>
         </q-td>
     </template>
