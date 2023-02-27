@@ -1,18 +1,18 @@
-// package com.zootopia.demo.security;
+package com.zootopia.demo.security;
 
-// import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.GrantedAuthority;
 
-// import com.zootopia.demo.entity.Authority;
+import com.zootopia.demo.entity.Authority;
 
-// import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
 
-// @AllArgsConstructor
-// public class SecurityAuthority implements GrantedAuthority{
+@AllArgsConstructor
+public class SecurityAuthority implements GrantedAuthority{
     
-//     private final Authority authority;
+    private final Authority authority;
 
-//     @Override
-//     public String getAuthority() {
-//         return authority.getName().toString();
-//     }
-// }
+    @Override
+    public String getAuthority() {
+        return authority.getName().toString();
+    }
+}
