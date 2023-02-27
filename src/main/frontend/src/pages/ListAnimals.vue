@@ -73,6 +73,14 @@ const columns = [
     align: "center",
     sortable: true,
   },
+
+  {
+    name: "actions",
+    label: "Actions",
+    field: "actions",
+    align: "center",
+  },
+
 ];
 
 pagination: ref({
@@ -99,7 +107,6 @@ const deleteAnimal =  async() => {
     </q-breadcrumbs>
   </div>
 
-
   <div class="column q-pa-md ">
     <q-table
       title="Animales"
@@ -111,14 +118,18 @@ const deleteAnimal =  async() => {
       selection="single"
       v-model:selected="selected"
       class="col-8"
-    />
-
-    <q-btn-group class="self-end q-my-lg">
-      <q-btn color="amber" rounded glossy icon="fa-solid fa-trash-can" @click="deleteAnimal" />
-      <q-btn color="amber" rounded glossy icon-right="fa-solid fa-pencil"  />
-    </q-btn-group>
-
+      :grid="$q.screen.sm"
+      :rows-per-page-options="[10]"
+    >
+    <template #body-cell-actions="props">
+        <q-td key="actions" align="center" >
+              <q-btn name="delete"  icon='delete' size="md" class="q-mr-sm" color="red" @click="deleteAnimal"/>
+              <q-btn name="modify"  icon='edit' size="md" color="blue"/>
+        </q-td>
+    </template>
+    </q-table>
   </div>
+
 </template>
 
 <style lang="scss" scoped></style>
