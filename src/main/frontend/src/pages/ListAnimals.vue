@@ -1,19 +1,20 @@
 <script setup>
-import { onMounted, ref, reactive, onUpdated } from "vue";
-import axios from "axios";
-import  { transformData }  from "../functions/functions.js"
+import { onBeforeMount, ref, reactive} from "vue";
+import AnimalsService from "../services/AnimalsService.js"
 
-const rows = ref([]);
-const urlAnimal = "http://localhost:8080/api/animals";
+let rows = ref([]);
+const service = new AnimalsService;
+const animals = service.getAnimals();
 
-onMounted(() => {
-  axios
-  .get(urlAnimal)
-  .then((response) => {
-    const transformedData = transformData(response.data);
-    rows.value = transformedData;
-  });
+onBeforeMount(async () => {
+  await service.fetchAll();
+  console.log(animals.value)
+  rows.value = animals.value
 })
+
+const deleteAnimal =  async(props) => {
+await service.deleteAnimal(props,rows)
+};
 
 const columns = [
   {
@@ -82,16 +83,7 @@ pagination: ref({
   rowsPerPage: 10,
 });
 
-const deleteAnimal =  async(props) => {
-console.log(props.id)
-  axios.delete("http://localhost:8080/api/animals/" + props.id)
-  .then((res) => {
-      const index = rows.value.findIndex( row => row.id === props.id);
-      rows.value.splice(index, 1);
-    })
-    .catch((err) => console.log(err));
 
-};
 </script>
 
 <template>
@@ -102,7 +94,7 @@ console.log(props.id)
     </q-breadcrumbs>
   </div>
 
-  <div class="column q-pa-md ">
+  <div class="column q-pa-md col-6 ">
     <q-table
       title="Animales"
       :rows="rows"
@@ -111,8 +103,8 @@ console.log(props.id)
       dark
       color="amber"
       selection="single"
-      class="col-8"
-      :grid="$q.screen.sm"
+      class="table"
+      :grid="$q.screen.lt.md"
       :rows-per-page-options="[10]"
     >
     <template #body-cell-actions="props">
@@ -126,4 +118,6 @@ console.log(props.id)
 
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>
