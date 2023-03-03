@@ -1,7 +1,4 @@
 
-
-
-
 INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','Raquel',"female")
 INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','sparrow',"female")
 INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','whyski',"male")
