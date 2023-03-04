@@ -1,5 +1,5 @@
 package com.zootopia.demo.utils;
 
-public enum AuthorityName {
+public enum RoleName {
     READ, WRITE, ADMIN
 }

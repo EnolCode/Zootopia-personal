@@ -1,5 +1,6 @@
 package com.zootopia.demo.entity;
-import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,10 +19,10 @@ public class User {
     private String password;
 
 
-    public User(String username, String password, List<Authority> authorities) {
+    public User(String username, String password, Set<Role> roles) {
         this.username = username;
         this.password = password;
-        this.authorities = authorities;
+        this.roles = roles;
     }
 
 
@@ -29,6 +30,6 @@ public class User {
     @JoinTable(name = "user_authority",
         joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn( name = "authority_id", referencedColumnName = "id"))
-    private List<Authority> authorities;
+    private Set<Role> roles;
 
 }

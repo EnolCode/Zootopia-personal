@@ -1,20 +1,20 @@
 package com.zootopia.demo.entity;
+import java.util.List;
+
 import javax.persistence.*;
-import com.zootopia.demo.utils.AuthorityName;
+import com.zootopia.demo.utils.RoleName;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity(name = "authorities")
-public class Authority {
+public class Role {
 
-    public Authority(AuthorityName authorityName){
-        this.name = authorityName;
+    public Role(RoleName roleName){
+        this.name = roleName;
     }
 
     @Id
@@ -22,6 +22,10 @@ public class Authority {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private AuthorityName name;
+    private RoleName name;
     
+    @ManyToMany(mappedBy = "roles")
+    List <User> users;
+
+    // public String roleName;
 }

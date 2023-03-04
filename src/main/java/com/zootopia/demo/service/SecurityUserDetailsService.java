@@ -1,31 +1,26 @@
-// package com.zootopia.demo.service;
+package com.zootopia.demo.service;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+import com.zootopia.demo.repository.UserRepository;
+import com.zootopia.demo.security.SecurityUser;
 
-// import org.springframework.security.core.userdetails.UserDetails;
-// import org.springframework.security.core.userdetails.UserDetailsService;
-// import org.springframework.security.core.userdetails.UsernameNotFoundException;
-// import org.springframework.stereotype.Service;
+@Service
+public class SecurityUserDetailsService implements UserDetailsService {
 
-// import com.zootopia.demo.repository.UserRepository;
-// import com.zootopia.demo.security.SecurityUser;
+    private final UserRepository userRepository;
 
-// @Service
-// public class SecurityUserDetailsService implements UserDetailsService {
+    public SecurityUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-//     private final UserRepository userRepository;
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-//     public SecurityUserDetailsService(UserRepository userRepository) {
-//         this.userRepository = userRepository;
-//     }
-
-//     @Override
-//     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-//         var user = this.userRepository.findByUsername(username);
-
-//         if(user.isPresent()){
-//            return new SecurityUser(user.get());
-//         }
-
-//         throw new UsernameNotFoundException("User not found: " + username);
-//     }
-// }
+        return userRepository
+            .findByUsername(username)
+            .map(SecurityUser::new)
+            .orElseThrow(()-> new UsernameNotFoundException("User not found: " + username));
+    }
+}

@@ -1,11 +1,11 @@
 package com.zootopia.demo.repository;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.zootopia.demo.entity.Authority;
-import com.zootopia.demo.utils.AuthorityName;
+import com.zootopia.demo.entity.Role;
+import com.zootopia.demo.utils.RoleName;
 
-public interface AuthorityRepository extends JpaRepository<Authority, Long> {
+public interface AuthorityRepository extends JpaRepository<Role, Long> {
     
-    Optional<Authority> findByName(AuthorityName name);
+    Optional<Role> findByName(RoleName name);
 
 }
