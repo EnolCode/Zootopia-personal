@@ -17,6 +17,7 @@ public class User {
 
     private String username;
     private String password;
+    // private String role;
 
 
     public User(String username, String password, Set<Role> roles) {
@@ -25,11 +26,10 @@ public class User {
         this.roles = roles;
     }
 
-
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority",
+    @JoinTable(name = "roles_users",
         joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn( name = "authority_id", referencedColumnName = "id"))
+        inverseJoinColumns = @JoinColumn( name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
 }

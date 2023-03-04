@@ -13,6 +13,6 @@ public class SecurityAuthority implements GrantedAuthority{
 
     @Override
     public String getAuthority() {
-        return authority.getName().toString();
+        return authority.getRoleName();
     }
 }

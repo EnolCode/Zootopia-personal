@@ -13,12 +13,10 @@ import com.zootopia.demo.repository.UserRepository;
 
 @Service
 public class UserService {
-   private final  UserRepository repository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final  UserRepository repository;
 
-    public UserService(UserRepository repository, BCryptPasswordEncoder passwordEncoder) {
+    public UserService(UserRepository repository) {
         this.repository = repository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     public User store(User user) { 
@@ -29,6 +27,7 @@ public class UserService {
             throw new UserAlreadyExistsException("El usuario ya existe.");
         }
         try {          
+                BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
                 String encodedPassword = passwordEncoder.encode(user.getPassword());
                 user.setPassword(encodedPassword);
                 return repository.save(user);

@@ -2,16 +2,11 @@ package com.zootopia.demo.security;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collectors;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.zootopia.demo.entity.Role;
 import com.zootopia.demo.entity.User;
-import com.zootopia.demo.utils.RoleName;
-
 import lombok.AllArgsConstructor;
 
 
@@ -35,7 +30,7 @@ public class SecurityUser implements UserDetails {
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
         for(Role role : user.getRoles()) {
-            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getName().toString());
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
             authorities.add(authority);
         }
         return authorities;

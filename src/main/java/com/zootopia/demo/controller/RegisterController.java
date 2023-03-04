@@ -10,7 +10,7 @@ import com.zootopia.demo.entity.User;
 import com.zootopia.demo.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/")
 public class RegisterController {
     
     UserService service;
@@ -25,7 +25,7 @@ public class RegisterController {
             service.store(user);
             return ResponseEntity.status(201).body("Register successfully");
         } catch (Exception e) {
-            return ResponseEntity.status(400).body("Register failed");
+            return ResponseEntity.status(400).body(e + " Register failed");
         }
     }
 }
