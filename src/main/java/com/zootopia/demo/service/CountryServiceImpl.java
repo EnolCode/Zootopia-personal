@@ -11,10 +11,12 @@ import com.zootopia.demo.entity.Country;
 import com.zootopia.demo.repository.CountryRepository;
 
 @Service
-public class CountryServiceImpl extends BaseService<Country> {
+public class CountryServiceImpl implements BaseService<Country> {
+
+    private CountryRepository repository;
 
     public CountryServiceImpl(CountryRepository repository) {
-        super(repository);
+        this.repository = repository;
     }
     @Override
     @Transactional(readOnly = true)

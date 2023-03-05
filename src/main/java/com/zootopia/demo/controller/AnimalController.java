@@ -6,18 +6,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-=======
-import org.springframework.web.bind.annotation.*;
->>>>>>> refactorizandoServicios
+// import org.springframework.web.bind.annotation.*;
 
 import com.zootopia.demo.entity.Animal;
-
 // import com.zootopia.demo.service.AnimalService;
 import com.zootopia.demo.service.AnimalServiceImpl;
+
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/animals")
@@ -40,12 +36,8 @@ public class AnimalController {
         return ResponseEntity.ok(oAnimal);  
     
     }
-<<<<<<< HEAD
     // Actualizar usuario
-    @PreAuthorize("hasAuthority('ADMIN')")
-=======
-
->>>>>>> refactorizandoServicios
+    // @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Animal animalDetails, @PathVariable Long id){
         Optional<Animal> animal = animalService.findById(id);
@@ -69,10 +61,6 @@ public class AnimalController {
     
     @GetMapping
     public List<Animal> readAll() {
-<<<<<<< HEAD
-        return animalService.findAll();
-=======
         return animalService.findAll();        
->>>>>>> refactorizandoServicios
     }
 }

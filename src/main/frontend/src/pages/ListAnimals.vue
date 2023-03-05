@@ -1,23 +1,4 @@
 <script setup>
-<<<<<<< HEAD
-import { onMounted, ref, reactive, onUpdated } from "vue";
-import axios from "axios";
-import  { transformData }  from "../functions/functions.js"
-
-const rows = ref([]);
-const urlAnimal = "http://localhost:8080/api/animals";
-let selected = ref([]);
-
-
-onMounted(async() => {
-  await axios
-  .get(urlAnimal)
-  .then((response) => {
-    console.log(response.data)
-    const transformedData =  transformData(response.data);
-    rows.value =  transformedData;
-  });
-=======
 import { onBeforeMount, ref, reactive} from "vue";
 import AnimalsService from "../services/AnimalsService.js"
 
@@ -29,7 +10,6 @@ onBeforeMount(async () => {
   await service.fetchAll();
   console.log(animals.value)
   rows.value = animals.value
->>>>>>> refactorizandoServicios
 })
 
 const deleteAnimal =  async(props) => {

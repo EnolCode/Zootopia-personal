@@ -12,10 +12,12 @@ import com.zootopia.demo.entity.Animal;
 import com.zootopia.demo.repository.AnimalRepository;
 
 @Service
-public class AnimalServiceImpl extends BaseService<Animal> {
+public class AnimalServiceImpl implements BaseService<Animal> {
+
+    private AnimalRepository repository;
 
     public AnimalServiceImpl(AnimalRepository repository) {
-        super(repository);
+        this.repository = repository;
     }
 
     @Override

@@ -65,11 +65,6 @@ const onSubmit = async () => {
 
     data: {
       name: nameModel.value,
-<<<<<<< HEAD
-      type: typeModel.value,
-      gender: genderModel.value,
-      country: countryModel.value,
-=======
       gender: genderModel.value,
       date: dateModel.value,
       country: {
@@ -78,7 +73,6 @@ const onSubmit = async () => {
       type: {
         idType: typeModel.value.value +1,
       },
->>>>>>> refactorizandoServicios
     },
   })
   // axios({

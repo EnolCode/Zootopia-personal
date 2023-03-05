@@ -1,15 +1,11 @@
 package com.zootopia.demo.entity;
-import java.util.List;
 
 import javax.persistence.*;
+import lombok.*;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table (name="types")
 public class Type {
@@ -19,19 +15,10 @@ public class Type {
 @Column (name="id_type")
 Long idType;
 
-public Type(String type) {
-    this.type = type;
-}
-
 @Column()
 String type;
 
-@OneToMany(mappedBy ="type")
-    private List<Animal> animals;
-
-@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-@JoinColumn(name = "family_id", nullable = true)
-Family family;
-
-
+public Type(String type) {
+    this.type = type;
+}
 }

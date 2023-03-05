@@ -5,33 +5,19 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
+// import org.springframework.data.jpa.repository.JpaRepository;
 
-public abstract class BaseService<T> {
+public interface BaseService<T> {
 
-    protected JpaRepository<T, Long> repository;
+    public List<T> findAll();
 
-    public BaseService(JpaRepository<T, Long> repository) {
-        this.repository = repository;
-    }
+    public Page<T> findAll(Pageable pageable);
 
-    public List<T> findAll() {
-        return repository.findAll();
-    }
+    public Optional<T> findById(Long id);
 
-    public Page<T> findAll(Pageable pageable) {
-        return repository.findAll(pageable);
-    }
-    public Optional<T> findById(Long id) {
-        return repository.findById(id);
-    }
+    public T save(T entity);
 
-    public T save(T entity) {
-        return repository.save(entity);
-    }
+    public void deleteById(Long id);
 
-    public void deleteById(Long id) {
-        repository.deleteById(id);
-    }
 }
 
