@@ -6,19 +6,24 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+=======
+import org.springframework.web.bind.annotation.*;
+>>>>>>> refactorizandoServicios
 
 import com.zootopia.demo.entity.Animal;
 
-import com.zootopia.demo.service.AnimalService;
+// import com.zootopia.demo.service.AnimalService;
+import com.zootopia.demo.service.AnimalServiceImpl;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
     @Autowired
-    private AnimalService animalService;
+    private AnimalServiceImpl animalService;
     //Creamos nuevo usuario
 
     @PostMapping(value = "", consumes="application/*" )
@@ -30,27 +35,29 @@ public class AnimalController {
     public ResponseEntity<?> read(@PathVariable Long id){
         Optional<Animal> oAnimal = animalService.findById(id);
         if(!oAnimal.isPresent()){
-            return ResponseEntity.notFound().build(); // Si el usuario no es encontrado por el id deveulve un not found
+            return ResponseEntity.notFound().build(); 
         }
-        return ResponseEntity.ok(oAnimal);  // Si esta todo bien devuelve un 200 y el usuario,  si llega hasta aqui siempre habra un user para mostrar
+        return ResponseEntity.ok(oAnimal);  
+    
     }
+<<<<<<< HEAD
     // Actualizar usuario
     @PreAuthorize("hasAuthority('ADMIN')")
+=======
+
+>>>>>>> refactorizandoServicios
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Animal animalDetails, @PathVariable Long id){
         Optional<Animal> animal = animalService.findById(id);
         if(!animal.isPresent()){
             return ResponseEntity.notFound().build();
         }
-        // BeanUtils.copyProperties(userDetails, user.get()) Con esta linea podemos modificar todo el objeto, pero en este caso no queremos modificar el id
-        animal.get().setName(animalDetails.getName()); // Coge el nombre que le pasamos y lo inyecta en el usuario que queremos modificar
+        animal.get().setName(animalDetails.getName());
         animal.get().setDate(animalDetails.getDate());
-        // animal.get().setEmail(animalDetails.getEmail());
-        // animal.get().setEnabled(animalDetails.getEnabled());
+        
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal.get()));
     }
     
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!animalService.findById(id).isPresent()) {
@@ -60,9 +67,12 @@ public class AnimalController {
         return ResponseEntity.ok().build();
     }
     
-    // Leer todos los usuarios
     @GetMapping
     public List<Animal> readAll() {
+<<<<<<< HEAD
         return animalService.findAll();
+=======
+        return animalService.findAll();        
+>>>>>>> refactorizandoServicios
     }
 }

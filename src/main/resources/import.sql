@@ -1,7 +1,13 @@
 
+INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','Raquel',"female")
+INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','sparrow',"female")
+INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','whyski',"male")
 
+INSERT INTO countries (id_country,country) VALUES (default,'Spain')
 
+INSERT INTO types (id_type, type) VALUES (default,'Cocodrile')
 
+<<<<<<< HEAD
 INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','pepe',"female")
 INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','Raquel',"female")
 INSERT INTO animals (id,date,name,gender) VALUES (default,'2008-12-01','sparrow',"female")
@@ -30,6 +36,11 @@ INSERT INTO roles (id, name) VALUES (default,'ROLE_ADMIN')
 INSERT INTO roles (id, name) VALUES (default,'ROLE_USER')
 
 
+=======
+
+UPDATE animals SET country_id = 1
+UPDATE animals SET type_id = 1
+>>>>>>> refactorizandoServicios
 
 
   

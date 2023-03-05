@@ -1,4 +1,5 @@
 <script setup>
+<<<<<<< HEAD
 import { onMounted, ref, reactive, onUpdated } from "vue";
 import axios from "axios";
 import  { transformData }  from "../functions/functions.js"
@@ -16,7 +17,24 @@ onMounted(async() => {
     const transformedData =  transformData(response.data);
     rows.value =  transformedData;
   });
+=======
+import { onBeforeMount, ref, reactive} from "vue";
+import AnimalsService from "../services/AnimalsService.js"
+
+let rows = ref([]);
+const service = new AnimalsService;
+const animals = service.getAnimals();
+
+onBeforeMount(async () => {
+  await service.fetchAll();
+  console.log(animals.value)
+  rows.value = animals.value
+>>>>>>> refactorizandoServicios
 })
+
+const deleteAnimal =  async(props) => {
+await service.deleteAnimal(props,rows)
+};
 
 const columns = [
   {
@@ -71,22 +89,21 @@ const columns = [
     align: "center",
     sortable: true,
   },
+
+  {
+    name: "actions",
+    label: "Actions",
+    field: "actions",
+    align: "center",
+  },
+
 ];
 
 pagination: ref({
   rowsPerPage: 10,
 });
 
-const deleteAnimal =  async() => {
 
-  axios.delete("http://localhost:8080/api/animals/" + selected.value[0].id)
-  .then((res) => {
-      const index = rows.value.findIndex( row => row.id === selected.value[0].id);
-      rows.value.splice(index, 1);
-    })
-    .catch((err) => console.log(err));
-
-};
 </script>
 
 <template>
@@ -97,8 +114,7 @@ const deleteAnimal =  async() => {
     </q-breadcrumbs>
   </div>
 
-
-  <div class="column q-pa-md ">
+  <div class="column q-pa-md col-6 ">
     <q-table
       title="Animales"
       :rows="rows"
@@ -107,16 +123,21 @@ const deleteAnimal =  async() => {
       dark
       color="amber"
       selection="single"
-      v-model:selected="selected"
-      class="col-8"
-    />
-
-    <q-btn-group class="self-end q-my-lg">
-      <q-btn color="amber" rounded glossy icon="fa-solid fa-trash-can" @click="deleteAnimal" />
-      <q-btn color="amber" rounded glossy icon-right="fa-solid fa-pencil"  />
-    </q-btn-group>
-
+      class="table"
+      :grid="$q.screen.lt.md"
+      :rows-per-page-options="[10]"
+    >
+    <template #body-cell-actions="props">
+        <q-td key="actions" align="center" >
+              <q-btn name="delete"  icon='delete' size="md" class="q-mr-sm" color="red" @click="deleteAnimal(props.row)"/>
+              <q-btn name="modify"  icon='edit' size="md" color="blue"/>
+        </q-td>
+    </template>
+    </q-table>
   </div>
+
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

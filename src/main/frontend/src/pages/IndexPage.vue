@@ -50,15 +50,15 @@ const isSendPassword = (val) => {
     <q-img
         src="https://images.moviesanywhere.com/cac313fcf9373e9446b6bb8ff171b8d1/8b8d6a81-b8e6-49ad-b835-32c2f01a03c5.jpg"
         spinner-color="white"
-        class="col-0 col-xl-7 col-lg-7 col-md-7 self-end"
+        class="col-sm-6 col-md-7 col-lg-7 gt-xs"
         style="height: 100vh;"
       />
-    <div class="row col-5 justify-center items-center">
+      <div class="container-form row col-12 col-sm-6 col-md-5 col-lg-5 col-xl-5 flex-center">
 
       <q-form
         @submit="onSubmit"
         @reset="onReset"
-        class="q-gutter-lg col-10 col-md-4 col-lg-4 col-xl-8"
+        class="q-gutter-lg  col-lg-9 col-sm-10"
       >
       <span class="text-h2 text-weight-bold">Welcome <q-icon name="fa-solid fa-paw" /> </span>
         <q-input

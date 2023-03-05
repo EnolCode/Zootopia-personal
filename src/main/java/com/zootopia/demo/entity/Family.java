@@ -14,11 +14,11 @@ import lombok.Setter;
 public class Family {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id_family")
     Long idFamily;
 
-    @Column(name = "family")
+    @Column()
     String family;
 
     @OneToMany(mappedBy = "family",cascade=CascadeType.ALL)

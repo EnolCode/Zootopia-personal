@@ -1,6 +1,7 @@
 package com.zootopia.demo.entity;
 import java.util.List;
 import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,7 @@ public class Country {
 @Column (name="id_country")
 Long idCountry;
 
-@Column (name="country")
+@Column ()
 String country;
 
 public Country(List<Animal> animals) {
@@ -26,6 +27,10 @@ public Country(List<Animal> animals) {
     for(Animal animal : animals){
         animal.setCountry(this);
     }
+}
+
+public Country(String country) {
+    this.country = country;
 }
 
 @OneToMany(mappedBy = "country", cascade=CascadeType.ALL)

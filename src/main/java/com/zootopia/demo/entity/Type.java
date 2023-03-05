@@ -19,6 +19,10 @@ public class Type {
 @Column (name="id_type")
 Long idType;
 
+public Type(String type) {
+    this.type = type;
+}
+
 @Column()
 String type;
 

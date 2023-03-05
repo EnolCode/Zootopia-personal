@@ -6,18 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+<<<<<<< HEAD
 
+=======
+>>>>>>> refactorizandoServicios
 import com.zootopia.demo.entity.Country;
-import com.zootopia.demo.service.CountryService;
+import com.zootopia.demo.service.CountryServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/")
 public class CountryController {
     @Autowired
-    private CountryService countryService;
+    private CountryServiceImpl countryService;
 
-    @PostMapping(value= "/country" , consumes="application/*" )
+    @PostMapping(value= "country" , consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Country country) {
         return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country));
     }
