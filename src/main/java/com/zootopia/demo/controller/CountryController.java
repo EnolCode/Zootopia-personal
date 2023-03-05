@@ -7,14 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zootopia.demo.entity.Country;
-import com.zootopia.demo.service.CountryService;
+import com.zootopia.demo.service.CountryServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/")
 public class CountryController {
     @Autowired
-    private CountryService countryService;
+    private CountryServiceImpl countryService;
 
     @PostMapping(value= "country" , consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Country country) {

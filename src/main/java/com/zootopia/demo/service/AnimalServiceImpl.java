@@ -14,9 +14,6 @@ import com.zootopia.demo.repository.AnimalRepository;
 @Service
 public class AnimalServiceImpl extends BaseService<Animal> {
 
-    // @Autowired 
-    // private AnimalRepository animalRepository;
-
     public AnimalServiceImpl(AnimalRepository repository) {
         super(repository);
     }
