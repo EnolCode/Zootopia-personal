@@ -27,6 +27,7 @@ INSERT INTO types (id_type, type) VALUES (default,'Atun')
 INSERT INTO types (id_type, type) VALUES (default,'Polilla')
 
 INSERT INTO roles (id, name) VALUES (default,'ROLE_ADMIN')
+INSERT INTO roles (id, name) VALUES (default,'ROLE_USER')
 
 
 
