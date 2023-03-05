@@ -10,10 +10,12 @@ import com.zootopia.demo.entity.Family;
 import com.zootopia.demo.repository.FamilyRepository;
 
 @Service
-public class FamilyServiceImpl extends BaseService<Family> {
+public class FamilyServiceImpl implements BaseService<Family> {
+
+    private FamilyRepository repository;
 
     public FamilyServiceImpl(FamilyRepository repository) {
-        super(repository);
+        this.repository = repository;
     }
 
     @Override

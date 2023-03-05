@@ -11,10 +11,12 @@ import com.zootopia.demo.entity.Type;
 import com.zootopia.demo.repository.TypeRepository;
 
 @Service
-public class TypeServiceImpl extends BaseService<Type> {
+public class TypeServiceImpl implements BaseService<Type> {
+
+    private TypeRepository repository;
 
     public TypeServiceImpl(TypeRepository repository) {
-        super(repository);
+        this.repository = repository;
     }
 
     @Override
