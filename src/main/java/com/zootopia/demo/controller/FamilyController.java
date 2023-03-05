@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zootopia.demo.entity.Family;
-import com.zootopia.demo.service.FamilyService;
+import com.zootopia.demo.service.FamilyServiceImpl;
 
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -15,7 +15,7 @@ import com.zootopia.demo.service.FamilyService;
 @RequestMapping("/api/")
 public class FamilyController {
     @Autowired
-    private FamilyService familyService;
+    private FamilyServiceImpl familyService;
 
     @PostMapping(value= "/family" , consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Family family) {
