@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.*;
 
 import com.zootopia.demo.entity.Animal;
 
-import com.zootopia.demo.service.AnimalService;
+// import com.zootopia.demo.service.AnimalService;
+import com.zootopia.demo.service.AnimalServiceImpl;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/animals")
 public class AnimalController {
     @Autowired
-    private AnimalService animalService;
+    private AnimalServiceImpl animalService;
     //Creamos nuevo usuario
 
     @PostMapping(value = "", consumes="application/*" )
