@@ -19,5 +19,4 @@ public interface FamilyService {
     public Family save(Family family);
 
     public void deleteById(Long id);
-
 }
