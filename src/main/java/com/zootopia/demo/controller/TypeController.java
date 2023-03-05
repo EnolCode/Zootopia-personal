@@ -7,14 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.zootopia.demo.entity.Type;
-import com.zootopia.demo.service.TypeService;
+import com.zootopia.demo.service.TypeServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class TypeController {
     @Autowired
-    private TypeService typeService;
+    private TypeServiceImpl typeService;
 
     @PostMapping(value= "/type" , consumes="application/*" )
     public ResponseEntity<?> create (@RequestBody Type type) {
@@ -41,7 +41,6 @@ public class TypeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(typeService.save(type.get()));
     }
     
-
     @DeleteMapping("/type/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){
         if(!typeService.findById(id).isPresent()) {
@@ -50,7 +49,6 @@ public class TypeController {
         typeService.deleteById(id);
         return ResponseEntity.ok().build();
     }
-    
     
     @GetMapping("/types") 
     public List<Type> readAll() {
