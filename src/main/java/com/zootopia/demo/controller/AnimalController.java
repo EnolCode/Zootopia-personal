@@ -44,7 +44,7 @@ public class AnimalController {
         animal.get().setName(animalDetails.getName());
         animal.get().setDate(animalDetails.getDate());
         
-        return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal.get()));
+        return ResponseEntity.status(HttpStatus.OK).body(animalService.save(animal.get()));
     }
     
     @DeleteMapping("/{id}")
