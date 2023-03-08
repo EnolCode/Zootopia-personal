@@ -26,6 +26,12 @@ public class AnimalServiceImpl implements BaseService<Animal> {
         return repository.findAll();
     }
 
+    public Animal update(Animal existingAnimal, Animal updatedAnimal) {
+        existingAnimal.setName(updatedAnimal.getName());
+        existingAnimal.setDate(updatedAnimal.getDate());
+        return repository.save(existingAnimal);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public Page<Animal> findAll(Pageable pageable) {

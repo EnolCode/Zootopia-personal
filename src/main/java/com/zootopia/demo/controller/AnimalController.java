@@ -18,10 +18,9 @@ import com.zootopia.demo.service.AnimalServiceImpl;
 public class AnimalController {
     @Autowired
     private AnimalServiceImpl animalService;
-    //Creamos nuevo usuario
 
     @PostMapping(value = "", consumes="application/*" )
-    public ResponseEntity<?> create (@RequestBody Animal animal) {
+    public ResponseEntity<Animal> create (@RequestBody Animal animal) {
         return ResponseEntity.status(HttpStatus.CREATED).body(animalService.save(animal));
     }
 
@@ -36,15 +35,13 @@ public class AnimalController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody Animal animalDetails, @PathVariable Long id){
-        Optional<Animal> animal = animalService.findById(id);
-        if(!animal.isPresent()){
+    public ResponseEntity<Animal> update(@RequestBody Animal animalDetails, @PathVariable Long id){
+        Optional<Animal> oAnimal = animalService.findById(id);
+        if(!oAnimal.isPresent()){
             return ResponseEntity.notFound().build();
         }
-        animal.get().setName(animalDetails.getName());
-        animal.get().setDate(animalDetails.getDate());
-        
-        return ResponseEntity.status(HttpStatus.OK).body(animalService.save(animal.get()));
+        Animal updatedAnimal = animalService.update(oAnimal.get(), animalDetails);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedAnimal);
     }
     
     @DeleteMapping("/{id}")
