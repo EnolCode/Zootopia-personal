@@ -38,7 +38,7 @@ public class CountryController {
         }
         country.get().setCountry(countryDetails.getCountry()); 
         
-        return ResponseEntity.status(HttpStatus.CREATED).body(countryService.save(country.get()));
+        return ResponseEntity.status(HttpStatus.OK).body(countryService.save(country.get()));
     }
     
     @DeleteMapping("/country/{id}")

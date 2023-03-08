@@ -38,7 +38,7 @@ public class TypeController {
         }
         type.get().setType(typeDetails.getType()); 
         
-        return ResponseEntity.status(HttpStatus.CREATED).body(typeService.save(type.get()));
+        return ResponseEntity.status(HttpStatus.OK).body(typeService.save(type.get()));
     }
     
     @DeleteMapping("/type/{id}")
