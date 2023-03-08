@@ -8,8 +8,8 @@ const animals = service.getAnimals();
 
 onBeforeMount(async () => {
   await service.fetchAll();
-  console.log(animals.value)
   rows.value = animals.value
+  console.log(rows.value)
 })
 
 const deleteAnimal =  async(props) => {

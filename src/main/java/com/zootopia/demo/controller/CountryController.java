@@ -36,9 +36,10 @@ public class CountryController {
         if(!oCountry.isPresent()){
             return ResponseEntity.notFound().build();
         }
-        Country updatedCountry = countryService.update(oCountry.get(), countryDetails);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedCountry);
-    }        
+        oCountry.get().setCountry(countryDetails.getCountry()); 
+        
+        return ResponseEntity.status(HttpStatus.OK).body(countryService.save(oCountry.get()));
+    }      
     
     
     @DeleteMapping("/country/{id}")

@@ -19,6 +19,7 @@ class AnimalsService {
       await axios.get(this.url).then((response) => {
         const transformedData = transformData(response.data);
         this.animals.value = transformedData;
+        console.log(transformedData)
       });
     } catch (err) {}
   }
