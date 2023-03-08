@@ -37,6 +37,13 @@ public class CountryServiceImpl implements BaseService<Country> {
         return repository.findById(id);
     }
 
+    @Override
+    @Transactional
+    public Country update(Country existingCountry, Country updatedCountry) {
+        existingCountry.setCountry(updatedCountry.getCountry());
+        return repository.save(existingCountry);
+    }
+
     @Transactional
     @Override
     public Country save(Country country) {

@@ -19,5 +19,7 @@ public interface BaseService<T> {
 
     public void deleteById(Long id);
 
+    public T update(T existingAnimal, T updatedAnimal);
+
 }
 

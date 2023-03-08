@@ -32,14 +32,14 @@ public class CountryController {
     
     @PutMapping("/country/{id}")
     public ResponseEntity<?> update(@RequestBody Country countryDetails, @PathVariable Long id){
-        Optional<Country> country = countryService.findById(id);
-        if(!country.isPresent()){
+        Optional<Country> oCountry = countryService.findById(id);
+        if(!oCountry.isPresent()){
             return ResponseEntity.notFound().build();
         }
-        country.get().setCountry(countryDetails.getCountry()); 
-        
-        return ResponseEntity.status(HttpStatus.OK).body(countryService.save(country.get()));
-    }
+        Country updatedCountry = countryService.update(oCountry.get(), countryDetails);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedCountry);
+    }        
+    
     
     @DeleteMapping("/country/{id}")
     public ResponseEntity<?> delete (@PathVariable Long id){

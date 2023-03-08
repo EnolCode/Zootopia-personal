@@ -38,6 +38,13 @@ public class TypeServiceImpl implements BaseService<Type> {
         return repository.findById(id);
     }
 
+    @Override
+    @Transactional
+    public Type update(Type existingType, Type updatedType) {
+        existingType.setType(updatedType.getType());
+        return repository.save(existingType);
+    }
+
     @Transactional
     @Override
     public Type save(Type type) {

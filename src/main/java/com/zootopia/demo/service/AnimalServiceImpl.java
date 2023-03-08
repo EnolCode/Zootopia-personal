@@ -26,6 +26,8 @@ public class AnimalServiceImpl implements BaseService<Animal> {
         return repository.findAll();
     }
 
+    @Override
+    @Transactional
     public Animal update(Animal existingAnimal, Animal updatedAnimal) {
         existingAnimal.setName(updatedAnimal.getName());
         existingAnimal.setDate(updatedAnimal.getDate());
