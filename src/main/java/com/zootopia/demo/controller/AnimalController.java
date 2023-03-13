@@ -1,8 +1,6 @@
 package com.zootopia.demo.controller;
 import java.util.List;
 import java.util.Optional;
-// import java.util.stream.Collectors;
-// import java.util.stream.StreamSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.zootopia.demo.entity.Animal;
 
-// import com.zootopia.demo.service.AnimalService;
 import com.zootopia.demo.service.AnimalServiceImpl;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -31,7 +28,6 @@ public class AnimalController {
             return ResponseEntity.notFound().build(); 
         }
         return ResponseEntity.ok(oAnimal);  
-    
     }
 
     @PutMapping("/{id}")
