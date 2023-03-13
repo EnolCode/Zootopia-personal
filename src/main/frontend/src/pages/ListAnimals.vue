@@ -37,7 +37,6 @@ const columns = [
     align: "center",
     sortable: true,
   },
-
   {
     name: "country",
     label: "Country",
@@ -45,7 +44,6 @@ const columns = [
     align: "center",
     sortable: true,
   },
-
   {
     name: "type",
     label: "Type",
@@ -53,7 +51,6 @@ const columns = [
     align: "center",
     sortable: true,
   },
-
   {
     name: "family",
     label: "Family",

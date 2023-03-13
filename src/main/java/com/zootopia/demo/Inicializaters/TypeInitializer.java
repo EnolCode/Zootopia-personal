@@ -33,7 +33,6 @@ public class TypeInitializer implements ApplicationRunner {
             new Type("weasel"),
             new Type("jackal"),
             new Type("otter")
-         
         );
         typeRepository.saveAll(types);
     }
