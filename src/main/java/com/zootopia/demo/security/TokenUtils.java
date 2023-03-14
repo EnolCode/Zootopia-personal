@@ -3,7 +3,7 @@ package com.zootopia.demo.security;
 import java.util.*;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.User;
+// import org.springframework.security.core.userdetails.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
