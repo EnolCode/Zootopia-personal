@@ -44,6 +44,7 @@ Permite visualizar los animales que estan viviendo en el zoologico, registrar nu
 - Vite
 - Pinia
 - Mysql
+- JWT
 
 
 ### Autor
