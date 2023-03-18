@@ -35,6 +35,10 @@ Creada con VueJs y Quasar, creando una api con Java, Springboot y Mysql. Utiliza
 
 ![image](https://user-images.githubusercontent.com/116892825/226101325-9b66ab47-2558-4125-9bcc-5dac8ba883b6.png)
 
+## Diagrama UML
+![image](https://user-images.githubusercontent.com/116892825/226101767-5c288972-da54-474e-9618-7c777ff828a4.png)
+
+
 ## :heavy_check_mark: Herramientas utilizadas:
 - HTML5 (metodología BEM)
 - SASS (SCSS)
