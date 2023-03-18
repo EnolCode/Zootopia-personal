@@ -5,17 +5,19 @@
    <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
    </p>
 
-Una intranet para la la gestión de registros en un zoologico.
-Permite visualizar los animales que estan viviendo en el zoologico, registrar nuevos animales, editar alguna caracteristica o eliminar un ejemplar.
+Una intranet para la gestión de registros en un zoológico.
+Permite visualizar los animales que están viviendo en el zoológico, registrar nuevos animales, editar alguna característica o eliminar un ejemplar.
+
+Creada con VueJs y Quasar, creando una api con Java, Springboot y Mysql. Utilizando JWT para la autorización y autenticación.
 
 ## :hammer:Funcionalidades del proyecto
 
-- `Iniciar Sesion`: Landing page del proyecto, necesitaras una cuenta válida para acceder.
+- `Iniciar Sesion`: Landing page del proyecto, necesitarás una cuenta válida para acceder.
 
 ![image](https://user-images.githubusercontent.com/116892825/226101110-8b03c32f-3265-41bb-992d-d7ce936cc25d.png)
 
 
-- `Visualizar Animales`: En el dashboard podrás ver los animales, eliminarlos o editarlos. También se pueden ordenadar por fecha o alfabeticamente.
+- `Visualizar Animales`: En el dashboard podrás ver los animales, eliminarlos o editarlos. También se pueden ordenadar por fecha o alfabéticamente.
 
 ![image](https://user-images.githubusercontent.com/116892825/226101002-5582e8dd-18ec-4444-8670-3cef7c46c4f0.png)
 
