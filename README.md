@@ -43,6 +43,7 @@ Permite visualizar los animales que estan viviendo en el zoologico, registrar nu
 - SPRING BOOT 2.7.8
 - Vite
 - Pinia
+- Mysql
 
 
 ### Autor
